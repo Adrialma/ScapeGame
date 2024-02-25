@@ -1,4 +1,4 @@
-package com.controller;
+package com.adrialma.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dao.DaoBd;
+import com.adrialma.dao.DaoBd;
 
 /**
  * Servlet implementation class Login
@@ -31,8 +31,8 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//Tester la conection a la BD
-		DaoBd.conecter();
-		DaoBd.closeConnection();
+		// DaoBd.conecter();
+		// DaoBd.closeConnection();
 		
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").
