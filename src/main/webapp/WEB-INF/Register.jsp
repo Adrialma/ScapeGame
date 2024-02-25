@@ -1,3 +1,4 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,6 +22,38 @@
  <body>
         <section class="cd-hero">
             <ul class="cd-hero-slider">  
+            
+            
+             <!-- 
+                //////////////////////////////////
+            	Slider pour l'Enregistrement
+                /////////////////////////////////////
+
+                     TODO -- Changer l'atribut "action" dans la balise form
+                             add method POST dans le form
+                -->
+
+                <li class="selected">
+                    <div class="cd-full-width">
+                        <div class="tm-slide-content-div">
+                            <form action="Register" method="POST">
+                                
+                                <h2 class="text-uppercase">S'enregistrer</h2>
+                                <div class="form-group">
+                                    <input name="firstName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Nom" value="${user.firstName}"><span class="erreur">${errorList.get('firstName')}</span>
+                                    <input name="lastName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Prenom" value="${user.lastName}"><span class="erreur">${errorList.get('lastName')}</span>
+                                    <input name="userName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="User Name" value="${user.userName}"><span class="erreur">${errorList.get('userName')}</span>
+                                    <input name="password" type="password" class="form-control center-block tm-max-w-400" id="password" placeholder="Mot de pass" value="${user.password}"><span class="erreur">${errorList.get('password')}</span>
+                                </div>                                
+                                <button type="submit" class="cd-btn">S'enregistrer</button>
+                                <p></p>
+                                <p class="m-b-mid" ><a href="#0" id="login">Log In</a> </p>
+
+                                
+                            </form>                           
+                        </div>                        
+                    </div> <!-- .cd-full-width -->
+                </li>
 
 
 
@@ -34,9 +67,11 @@
                             add method POST dans le form
             -->
 
-                <li class="selected">
+                <li >
                     <div class="cd-full-width">
                         <div class="tm-slide-content-div">
+                        
+                        
                             <form action="Login" id="search-form">
                                
                                 <h2 class="text-uppercase">Log In</h2>
@@ -51,40 +86,13 @@
                                 <p class="m-b-mid" ><a href="#0" id="register">S'enregistrer</a> </p>
                             </form>  
 
+
+
                         </div>                        
                     </div> <!-- .cd-full-width -->
                 </li>
 
-                <!-- 
-                //////////////////////////////////
-            	Slider pour l'Enregistrement
-                /////////////////////////////////////
-
-                     TODO -- Changer l'atribut "action" dans la balise form
-                             add method POST dans le form
-                -->
-
-                <li>
-                    <div class="cd-full-width">
-                        <div class="tm-slide-content-div">
-                            <form action="Register" method="POST">
-                                
-                                <h2 class="text-uppercase">S'enregistrer</h2>
-                                <div class="form-group">
-                                    <input name="firstName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Nom"><span class="erreur"></span>
-                                    <input name="lastName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Prenom">
-                                    <input name="userName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="User Name">
-                                    <input name="password" type="password" class="form-control center-block tm-max-w-400" id="password" placeholder="Mot de pass">
-                                </div>                                
-                                <button type="submit" class="cd-btn">S'enregistrer</button>
-                                <p></p>
-                                <p class="m-b-mid" ><a href="#0" id="login">Log In</a> </p>
-
-                                
-                            </form>                           
-                        </div>                        
-                    </div> <!-- .cd-full-width -->
-                </li>
+               
                 
                 
                 <!-- 
@@ -104,8 +112,8 @@
                     <span class="cd-marker item-1"></span>
                     
                     <ul>
-                        <li class="selected" id="logMe"><a href="#0"></a></li>
-                        <li id="registerMe"><a href="#0"></a></li>                     
+                        <li class="selected" id="registerMe"><a href="#0"></a></li>
+                        <li id="logMe"><a href="#0"></a></li>                     
                     </ul>
                 </nav>  
             </div> <!-- .cd-slider-nav -->
@@ -167,6 +175,11 @@
                      }
                 });                             
             });
+            
+            
+            
+            
+            
 
         </script>             
 
