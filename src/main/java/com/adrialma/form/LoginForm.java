@@ -7,5 +7,6 @@ import com.adrialma.model.User;
 public class LoginForm {
 	private User user;
 	private HashMap<String, String> errorList;
+	
 
 }
