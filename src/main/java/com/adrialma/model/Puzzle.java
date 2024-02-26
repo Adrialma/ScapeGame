@@ -5,6 +5,7 @@ public class Puzzle {
 	private String description;
 	private int level; // Peut être représenté par un String (ex: "Facile = 3", "Moyen = 2", "Difficile= 1")
 	private String answer;// la soulution de l'énigme 
+	
 	private int time; // Le temps passé dans l'énigme en secondes
 	private int scorePuzzle;//stocke le resultat calculé avec la méthode scoreCalculate
 	

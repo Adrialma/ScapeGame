@@ -37,18 +37,10 @@
                 <li class="selected">
                     <div class="cd-full-width">
                         <div class="tm-slide-content-div">
-                            <form action="Register" method="POST">
+                            <form action="" method="POST">
                                 
                                 <h2 class="text-uppercase">S'enregistrer</h2>
-                                <span class="erreur">${errorList.get('bderror')}</span>
-                                <div class="form-group">
-                                    <input name="firstName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Nom" value="${user.firstName}"><span class="erreur">${errorList.get('firstName')}</span>
-                                    <input name="lastName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Prenom" value="${user.lastName}"><span class="erreur">${errorList.get('lastName')}</span>
-                                    <input name="userName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="User Name" value="${user.userName}"><span class="erreur">${errorList.get('userName')}</span>
-                                    <input name="password" type="password" class="form-control center-block tm-max-w-400" id="password" placeholder="Mot de pass" value="${user.password}"><span class="erreur">${errorList.get('password')}</span>
-                                </div>                                
-                                <button type="submit" class="cd-btn">S'enregistrer</button>
-                                <p></p>
+                                <p>L'enregistrement a etait effectué</p>
                                 <p class="m-b-mid" ><a href="#0" id="login">Log In</a> </p>
 
                                 

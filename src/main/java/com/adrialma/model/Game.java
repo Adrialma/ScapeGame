@@ -11,9 +11,9 @@ public class Game {
     private Date fin; // L'heure de fin de la session
     private int score; //out, la moyenne des scores obtenus dans la classe Puzzle
 	private List<Puzzle> puzzles= new ArrayList<Puzzle>();
-	private String levelPlayed;// le niveau de defficulté choisi par le joueur
+	private int levelPlayed;// le niveau de defficulté choisi par le joueur
 	
-	public Game(int idGame, Date date, Date start, Date fin, int score, List<Puzzle> puzzles, String levelPlayed) {
+	public Game(int idGame, Date date, Date start, Date fin, int score, List<Puzzle> puzzles, int levelPlayed) {
 		super();
 		this.idGame = idGame;
 		this.date = date;

@@ -39,7 +39,7 @@ public class Register extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		System.out.println(request.getParameter("firstName"));
+		System.out.println(request.getParameter("firstName")); 
 		System.out.println(request.getParameter("lastName"));
 		System.out.println(request.getParameter("userName"));
 		System.out.println(request.getParameter("password"));
@@ -52,6 +52,9 @@ public class Register extends HttpServlet {
 		if (registerForm.getErrorList().size()<1) {
 			// TODO enregistrer le user dans la bd et redirectioner sur le site de success enregistrement
 			// (il y pas eu d'erreur)
+			
+			this.getServletContext().getRequestDispatcher("/WEB-INF/RegisterOK.jsp").
+			forward(request, response);
 		}else {
 			//erreurs dans les donnes, afficher la page d'erreur
 			request.setAttribute("errorList", registerForm.getErrorList());
