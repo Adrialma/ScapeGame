@@ -1,7 +1,5 @@
 package com.adrialma.model;
 
-import java.util.Date;
-
 public class Puzzle {
 	private int idPuzzle;
 	private String description;
@@ -36,5 +34,6 @@ public class Puzzle {
 		//vérification de la réponse
 		return false;// à modifier
 	}
+	
 
 }

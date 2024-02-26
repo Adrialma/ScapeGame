@@ -11,6 +11,7 @@ public class User {
 	private String userName;
 	private String password;//stock le mdp chiffré/déchiffré
 	private List<Game> games= new ArrayList<Game>();
+	private Boolean isconnected;
 	
 	public User(int idUser, String firstName, String lastName, String userName, String password, List<Game> games) {
 		super();
@@ -35,4 +36,14 @@ public class User {
 		//méthode à définir
 	}
 	
+	public void connect() {
+		//todo
+		isconnected = true;
+	}
+	public void play() {
+		//todo
+		//played level
+		//
+		
+	}
 }
