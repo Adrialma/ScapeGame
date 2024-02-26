@@ -31,8 +31,8 @@ public class Login extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		//Tester la conection a la BD
-		// DaoBd.conecter();
-		// DaoBd.closeConnection();
+		//DaoBd.conecter();
+		//DaoBd.closeConnection();
 		
 
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").
