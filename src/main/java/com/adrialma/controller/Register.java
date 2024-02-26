@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.adrialma.model.RegisterForm;
+import com.adrialma.form.RegisterForm;
 
 /**
  * Servlet implementation class Register

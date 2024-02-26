@@ -1,8 +1,10 @@
-package com.adrialma.model;
+package com.adrialma.form;
 
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+
+import com.adrialma.model.User;
 
 public class RegisterForm {
 	private User user;
