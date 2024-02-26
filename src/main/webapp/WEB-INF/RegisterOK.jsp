@@ -26,12 +26,10 @@
             
              <!-- 
                 //////////////////////////////////
-            	Slider pour l'Enregistrement
+            	Message d'enregistrement effectué
                 /////////////////////////////////////
 
-                     TODO -- Changer l'atribut "action" dans la balise form
-                             add method POST dans le form
-                             
+                    
                 -->
 
                 <li class="selected">
