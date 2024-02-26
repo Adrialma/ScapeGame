@@ -1,5 +1,4 @@
 package com.adrialma.dao;
-import com.adrialma.dao.DaoBd;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
