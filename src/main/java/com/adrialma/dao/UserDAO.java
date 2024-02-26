@@ -1,4 +1,5 @@
 package com.adrialma.dao;
+import com.adrialma.dao.DaoBd;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,7 +28,7 @@ public class UserDAO implements Crudable<User>  {
 																		// 2nd paramètre: les données peuvent être mises à jour ou non
 							ResultSet.CONCUR_READ_ONLY) ; 				// Ici lecture seule (par défaut), utiliser "CONCUR_UPDATABLE" pour modifier les données et màj la bdd.
 					ResultSet rs = smt.executeQuery(sql) ;				// A l'exécution de la requête sql, l'objet ResultSet récupère et stocke les données.
-					if(rs.first())									// On place le curseur sur la 1ère ligne de résultat, si résultat il y a
+					if(rs.first())										// On place le curseur sur la 1ère ligne de résultat, si résultat il y a
 						user = new User(rs.getInt("idUser"), rs.getString("firstName"),  // Création d'un objet Salarie à partir du contenu de chaque colonne de la BDD correspondant à la ligne retournée
 								rs.getString("lastName"), 
 								userName, 
@@ -106,15 +107,6 @@ public class UserDAO implements Crudable<User>  {
 	public boolean update(User o) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	//Méthode login pour vérification des identifiants de l'utilisateur pour se connecter
-	public User login(String userName, String password) {
-	    User user = get(userName); // Utilise la méthode get existante pour récupérer l'utilisateur par son userName
-	    if (user != null && user.checkPassword(password)) {
-	        return user; // Retourne l'utilisateur si le mot de passe est correct
-	    }
-	    return null; // Retourne null si l'utilisateur n'existe pas ou si le mot de passe est incorrect
 	}
 
 	
