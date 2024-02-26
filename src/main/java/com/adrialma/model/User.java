@@ -22,6 +22,27 @@ public class User {
 		this.games = games;
 	}
 	
+	
+	
+	
+	
+	
+	
+	public User(int idUser, String firstName, String lastName, String userName, String password) {
+		super();
+		this.idUser = idUser;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.password = password;
+	}
+
+
+
+
+
+
+
 	public void encrypt() {
 		//todo
 		//chiffrage de mot de passe
