@@ -108,6 +108,15 @@ public class UserDAO implements Crudable<User>  {
 		return false;
 	}
 
+	//Méthode login pour vérification des identifiants de l'utilisateur pour se connecter
+	public User login(String userName, String password) {
+	    User user = get(userName); // Utilise la méthode get existante pour récupérer l'utilisateur par son userName
+	    if (user != null && user.checkPassword(password)) {
+	        return user; // Retourne l'utilisateur si le mot de passe est correct
+	    }
+	    return null; // Retourne null si l'utilisateur n'existe pas ou si le mot de passe est incorrect
+	}
+
 	
 
 }
