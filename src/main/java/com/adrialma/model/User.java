@@ -67,4 +67,155 @@ public class User {
 		//
 		
 	}
+
+
+
+
+
+
+
+	public int getIdUser() {
+		return idUser;
+	}
+
+
+
+
+
+
+
+	public void setIdUser(int idUser) {
+		this.idUser = idUser;
+	}
+
+
+
+
+
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+
+
+
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+
+
+
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+
+
+
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+
+
+
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+
+
+
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+
+
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+
+
+
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+
+
+
+
+
+
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+
+
+
+
+
+
+
+	public Boolean getIsconnected() {
+		return isconnected;
+	}
+
+
+
+
+
+
+
+	public void setIsconnected(Boolean isconnected) {
+		this.isconnected = isconnected;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
