@@ -37,7 +37,7 @@
                 <li class="selected">
                     <div class="cd-full-width">
                         <div class="tm-slide-content-div">
-                            <form action="Login" id="search-form">
+                            <form action="Login" id="search-form" method="POST">
                                
                                 <h2 class="text-uppercase">Log In</h2>
                                 <p >Entrez dans le fantastique jeu d'evasion </p>

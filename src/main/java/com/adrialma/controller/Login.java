@@ -49,7 +49,8 @@ public class Login extends HttpServlet {
             // Connexion réussie
             HttpSession session = request.getSession();
             session.setAttribute("user", loginForm.getUser()); // Stocker l'utilisateur dans la session
-            response.sendRedirect("HomePage"); // Rediriger vers la page d'accueil TODO*******
+            //response.sendRedirect("/WEB-INF/HomePage.jsp"); // Rediriger vers la page d'accueil TODO*******
+           
         } else {
             // Connexion échouée
             request.setAttribute("errors", loginForm.getErrorList()); // Passer la liste des erreurs
