@@ -40,6 +40,7 @@
                             <form action="Register" method="POST">
                                 
                                 <h2 class="text-uppercase">S'enregistrer</h2>
+                                <span class="erreur">${errorList.get('bderror')}</span>
                                 <div class="form-group">
                                     <input name="firstName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Nom" value="${user.firstName}"><span class="erreur">${errorList.get('firstName')}</span>
                                     <input name="lastName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Prenom" value="${user.lastName}"><span class="erreur">${errorList.get('lastName')}</span>
