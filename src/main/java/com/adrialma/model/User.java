@@ -162,4 +162,12 @@ public class User {
 		this.isconnected = isconnected;
 	}
 
+	@Override
+	public String toString() {
+		return "User [idUser=" + idUser + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
+				+ userName + ", password=" + password + ", games=" + games + ", isconnected=" + isconnected + "]";
+	}
+	
+	
+
 }

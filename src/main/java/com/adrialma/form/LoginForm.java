@@ -23,15 +23,16 @@ public class LoginForm {
         if (errorList.isEmpty()) {
             UserDAO userDAO = new UserDAO();
             User user = userDAO.get(userName);
-            
 
             if (user != null && user.checkPassword(password)) {
+            	
                 // Connexion réussie
                 this.user = user;
                 user.connect(); // Mise à jour de l'état de connexion de l'utilisateur
             } else {
                 // Échec de la connexion
                 errorList.put("loginError", "Nom d'utilisateur ou mot de passe incorrect.");
+                
             }
         }
     }
@@ -46,7 +47,7 @@ public class LoginForm {
     // Valide le mot de passe
     private void validatePassword(String password) {
         if (password == null || password.trim().isEmpty()) {
-            errorList.put("pass", "Le mot de passe ne doit pas être vide.");
+            errorList.put("password", "Le mot de passe ne doit pas être vide.");
         }
     }
 
