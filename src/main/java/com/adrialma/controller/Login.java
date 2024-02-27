@@ -43,13 +43,17 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 // Traiter les informations du formulaire de login
-		LoginForm loginForm = new LoginForm(request);
-		if (loginForm.getErrorList().isEmpty()) {
-			
+        LoginForm loginForm = new LoginForm(request);
+
+        if (loginForm.getErrorList().isEmpty()) {
             // Connexion réussie
             HttpSession session = request.getSession();
             session.setAttribute("user", loginForm.getUser()); // Stocker l'utilisateur dans la session
-            response.sendRedirect("/WEB-INF/HomePage.jsp"); // Rediriger vers la page d'accueil 
+            //response.sendRedirect("/WEB-INF/HomePage.jsp"); // Rediriger vers la page d'accueil TODO*******
+            
+            this.getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").
+    		forward(request, response);
+           
         } else {
             // Connexion échouée
             request.setAttribute("errors", loginForm.getErrorList()); // Passer la liste des erreurs
@@ -59,3 +63,5 @@ public class Login extends HttpServlet {
     }
 
 }
+
+

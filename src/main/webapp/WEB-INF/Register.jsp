@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     
                                     <input name="userName" type="text" class="form-control center-block tm-max-w-400" id="User" placeholder="Nom d'utilisateur">
-                                    <input name="pass" type="password" class="form-control center-block tm-max-w-400" id="password" placeholder="Mot de pass">
+                                    <input name="password" type="password" class="form-control center-block tm-max-w-400" id="password" placeholder="Mot de pass">
                                 </div>                                
                                 <button type="submit" class="cd-btn">Commencer a Jouer</button>
                                 <p></p>

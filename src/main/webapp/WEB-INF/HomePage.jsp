@@ -11,17 +11,17 @@
 
 	<div class="mainContainer">
 		<h1>Selectioner le level a jouer</h1>
-		<form action="">
+		<form action="HomePage" method="POST">
 			<fieldset>
 
 				<label class="container">Facile <input type="radio"
-					checked="checked" id="facile" name="level" value="facile">
+					checked="checked" id="facile" name="level" value="3">
 					<span class="checkmark"></span>
 				</label> <label class="container">Moyen <input type="radio"
-					id="moyen" name="level" value="moyen"> <span
+					id="moyen" name="level" value="2"> <span
 					class="checkmark"></span>
 				</label> <label class="container">Difficile <input type="radio"
-					id="difficile" name="level" value="difficile"> <span
+					id="difficile" name="level" value="1"> <span
 					class="checkmark"></span>
 				</label>
 				<div id="containerBoton">

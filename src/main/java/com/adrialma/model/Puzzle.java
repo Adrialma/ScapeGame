@@ -19,6 +19,20 @@ public class Puzzle {
 		this.scorePuzzle = scorePuzzle;
 	}
 	
+	
+	
+	
+	public Puzzle(int idPuzzle, String description, int level, String answer) {
+		super();
+		this.idPuzzle = idPuzzle;
+		this.description = description;
+		this.level = level;
+		this.answer = answer;
+	}
+
+
+
+
 	public void scoreCalculate(){
 		//todo 
 		//calcule du score en fonction du temps passé sur la session et le niveau de defficulté
@@ -35,6 +49,16 @@ public class Puzzle {
 		//vérification de la réponse
 		return false;// à modifier
 	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "Puzzle [idPuzzle=" + idPuzzle + ", description=" + description + ", level=" + level + ", answer="
+				+ answer + ", time=" + time + ", scorePuzzle=" + scorePuzzle + "]";
+	}
+	
+	
 	
 
 }
