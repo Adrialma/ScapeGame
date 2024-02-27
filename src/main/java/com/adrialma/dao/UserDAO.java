@@ -32,7 +32,7 @@ public class UserDAO implements Crudable<User>  {
 						user = new User(rs.getInt("idUser"), rs.getString("firstName"),  // Création d'un objet Salarie à partir du contenu de chaque colonne de la BDD correspondant à la ligne retournée
 								rs.getString("lastName"), 
 								userName, 
-								rs.getString("password"));
+								rs.getString("password"),false);
 					else
 						System.out.println("Utilisateur:" + userName + " Introuvable");
 					

@@ -1,3 +1,4 @@
+
 package com.adrialma.controller;
 
 import java.io.IOException;
@@ -50,6 +51,9 @@ public class Login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", loginForm.getUser()); // Stocker l'utilisateur dans la session
             //response.sendRedirect("/WEB-INF/HomePage.jsp"); // Rediriger vers la page d'accueil TODO*******
+            
+            this.getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").
+    		forward(request, response);
            
         } else {
             // Connexion échouée
@@ -60,3 +64,4 @@ public class Login extends HttpServlet {
     }
 
 }
+

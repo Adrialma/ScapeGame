@@ -23,6 +23,7 @@ public class LoginForm {
         if (errorList.isEmpty()) {
             UserDAO userDAO = new UserDAO();
             User user = userDAO.get(userName);
+            
 
             if (user != null && user.checkPassword(password)) {
                 // Connexion réussie
