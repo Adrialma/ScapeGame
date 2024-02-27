@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.adrialma.dao.PuzzleDAO;
+
+/**
+ * 
+ */
 public class Game {
 	private int idGame;
     private Date date; // pour stocker la date de la session
@@ -23,11 +28,42 @@ public class Game {
 		this.puzzles = puzzles;
 		this.levelPlayed = levelPlayed;
 	}
+	
+	
+
+	public Game() {
+		super();
+	}
+
+
 
 	public void exec() {
 		//todo
 		//calcule de la moyenne des scores obtenus dans la classe Puzzle
 		//score = sum scorePuzzle/nbr de puzzle
+	}
+	
+	
+	
+	/**
+	 * methode qui recupere les puzzels selon le level choissi
+	 * @param level
+	 * @return List de puzzels 
+	 */
+	public void getPuzzels(int level) {
+		System.out.println("Getting puzzle list for level: " + level); // TODO message print a mettre dans log.txt si il reste du temps
+		
+		PuzzleDAO puzzleDAO = new PuzzleDAO();
+		puzzles= new ArrayList<Puzzle>(puzzleDAO.getArray(level));
+		
+		System.out.println("Liste de puzzles");
+		 
+		for (Puzzle puzzle: puzzles) {
+			System.out.println(puzzle);
+		}
+		
+		
+		
 	}
 	
 	

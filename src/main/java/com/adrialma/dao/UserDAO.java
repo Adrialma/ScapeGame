@@ -1,5 +1,6 @@
 package com.adrialma.dao;
 
+import java.nio.channels.SelectableChannel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -75,6 +76,7 @@ public class UserDAO implements Crudable<User>  {
 	@Override
 	public boolean add(User o) {
 		// TODO Auto-generated method stub
+		
 		String sql =  
 				"INSERT INTO user (firstName,lastName,userName,password) VALUES (?,?,?,?);" ;
 		try {         
@@ -106,6 +108,15 @@ public class UserDAO implements Crudable<User>  {
 	public boolean update(User o) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ArrayList<User> getArray(int x) {
+		// TODO Auto-generated method stub
+		
+		
+		
+		return null;
 	}
 
 	
