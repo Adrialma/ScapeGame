@@ -46,7 +46,7 @@ public class LoginForm {
     // Valide le mot de passe
     private void validatePassword(String password) {
         if (password == null || password.trim().isEmpty()) {
-            errorList.put("password", "Le mot de passe ne doit pas être vide.");
+            errorList.put("pass", "Le mot de passe ne doit pas être vide.");
         }
     }
 
