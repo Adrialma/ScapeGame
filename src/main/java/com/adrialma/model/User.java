@@ -1,6 +1,9 @@
 package com.adrialma.model;
 
 import java.util.List;
+
+import com.adrialma.dao.PuzzleDAO;
+
 import java.util.ArrayList;
 import java.security.MessageDigest;
 
@@ -70,10 +73,16 @@ public class User {
 		this.isconnected = false;
 	}
 
-	public void play() {
-		//TODO
-		//played level
-		//
+	
+	
+	public void play(int level) {
+		
+		System.out.println("User.play() method initialized"); //TODO a effacer
+		//Creer un nouveau Game avec les puzzles de la dificulté choissi
+		Game newGame = new Game();
+		newGame.getPuzzels(level);
+		games.add(newGame);
+		
 
 	}
 
