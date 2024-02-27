@@ -47,23 +47,21 @@ public class Register extends HttpServlet {
 		
 		
 		RegisterForm registerForm = new RegisterForm(request);
-		request.setAttribute("user", registerForm.getUser());
-		
-		if (registerForm.getErrorList().size()<1) {
-			// TODO enregistrer le user dans la bd et redirectioner sur le site de success enregistrement
-			// (il y pas eu d'erreur)
-			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/RegisterOK.jsp").
-			forward(request, response);
-		}else {
-			//erreurs dans les donnes, afficher la page d'erreur
-			request.setAttribute("errorList", registerForm.getErrorList());
-			doGet(request, response);
-			
-		}
-		
-		
-		
+        request.setAttribute("user", registerForm.getUser());
+
+        if (registerForm.getErrorList().size()<1) {
+            // TODO enregistrer le user dans la bd et redirectioner sur le site de success enregistrement
+            // (il y pas eu d'erreur)
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/RegisterOK.jsp").
+            forward(request, response);
+        }else {
+            //erreurs dans les donnes, afficher la page d'erreur
+            request.setAttribute("errorList", registerForm.getErrorList());
+            doGet(request, response);
+
+        }
+
 	}
 
 }
