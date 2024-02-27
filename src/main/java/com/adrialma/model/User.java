@@ -29,7 +29,7 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userName = userName;
-        this.password = password;
+		this.setPassword(password); //Chiffre et définit le mot de passe
     }
 
 	// Méthode pour définir et chiffrer le mot de passe de l'utilisateur
