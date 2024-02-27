@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.adrialma.form.LoginForm;
-import com.adrialma.model.User;
 
 /**
  * Servlet implementation class Login
