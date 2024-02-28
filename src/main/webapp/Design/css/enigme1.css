@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/backEnigme1.jpg'); /* Chemin vers votre image de fond */
+    background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble de l'écran */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    height: 100vh; /* Définit la hauteur de l'élément body à 100% de la hauteur de la fenêtre visible */
+    display: flex; /* Utilise Flexbox pour centrer le contenu verticalement */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    color: white; /* Couleur du texte */
+}
+
+.mainContainer {
+    text-align: left;
+
+    color: #000000;
+    
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.mainContainer h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.mainContainer p {
+    font-size: 0.8em;
+}
+
+
+img{
+    height: 118px;
+    width: 78px;
+}
+
+
+.int{
+    display: inline-block;
+}
+
+/**************************************/
+
+.flotante {
+    cursor: pointer;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    box-sizing: border-box;
+  /*  border: 5px white solid; */
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    transform: translatey(0px);
+    animation: float 5s ease-in-out infinite;
+    img { width: 100%; height: 100%; }
+  }
+  
+  
+  
+  
+  @keyframes float {
+    0% {
+      box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+      transform: translatey(0px);
+    }
+    50% {
+      box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+      transform: translatey(-20px);
+    }
+    100% {
+      box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+      transform: translatey(0px);
+    }
+  }
+
+  /*********************** Div caché******************************/
+  .hidden {
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff;
+    opacity: 1;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+
+
+.visible {
+  visibility: visible;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff;
+  opacity: 1;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/***********************************************/
+/* Boton */
+.botonAzul {
+  border-radius: 10px;
+  font-size: 1.2rem;
+  padding: 0.5em 1.5em;
+  background-color: #0099cb;
+border: none;
+color: rgb(5, 5, 5);
+text-transform: capitalize;
+margin-top: 0;
+
+
+}
+
+.botonAzul:hover,
+.botonAzul:focus {
+background-color: #58BEDF;
+}
+
+
+#containerBoton{
+  text-align: center; /* Centre le contenu horizontalement */
+}
+/******************** Input box*********************/
+input{
+  font-size: 1.5rem;
+}
