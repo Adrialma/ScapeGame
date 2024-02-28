@@ -1,13 +1,17 @@
 package com.adrialma.form;
 
-import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.adrialma.dao.UserDAO;
 import com.adrialma.model.User;
 
 public class LoginForm {
     private User user;
     private HashMap<String, String> errorList;
+    private static final Logger LOGGER = Logger.getLogger(LoginForm.class.getName());// rajout d'attribut
 
     public LoginForm(HttpServletRequest request) {
         errorList = new HashMap<>();
@@ -23,20 +27,26 @@ public class LoginForm {
         if (errorList.isEmpty()) {
             UserDAO userDAO = new UserDAO();
             User user = userDAO.get(userName);
-
-            if (user != null && user.checkPassword(password)) {
-            	
+/////////////////////
+            if (user == null) {
+                // Le nom d'utilisateur n'existe pas
+                errorList.put("userNameError", "Le nom d'utilisateur n'est pas correct.");
+            } else if (!user.checkPassword(password)) {
+                // Le mot de passe n'est pas correct
+                errorList.put("passwordError", "Le mot de passe n'est pas correct.");
+            } else {
                 // Connexion réussie
                 this.user = user;
                 user.connect(); // Mise à jour de l'état de connexion de l'utilisateur
-            } else {
-                // Échec de la connexion
-                errorList.put("loginError", "Nom d'utilisateur ou mot de passe incorrect.");
-                
             }
         }
-    }
 
+        if (!errorList.isEmpty()) {
+            logErrors(errorList);
+            request.setAttribute("errors", errorList);
+        }
+    }
+//////////////////////
     // Valider le nom d'utilisateur
     private void validateUserName(String userName) {
         if (userName == null || userName.trim().isEmpty()) {
@@ -50,7 +60,17 @@ public class LoginForm {
             errorList.put("password", "Le mot de passe ne doit pas être vide.");
         }
     }
-
+////////////////////
+    // Méthode pour enregistrer les erreurs dans la console ou un fichier journal
+    private void logErrors(HashMap<String, String> errors) {
+        StringBuilder errorMsg = new StringBuilder("Erreurs lors de la tentative de connexion :\n");
+        for (HashMap.Entry<String, String> error : errors.entrySet()) {
+            errorMsg.append(error.getKey()).append(": ").append(error.getValue()).append("\n");
+        }
+        
+        LOGGER.log(Level.WARNING, errorMsg.toString());
+    }
+//////////////////////
     public User getUser() {
         return user;
     }

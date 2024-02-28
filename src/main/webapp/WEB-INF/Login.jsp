@@ -55,18 +55,30 @@
 								<input name="userName" type="text"
 									class="form-control center-block tm-max-w-400" id="User"
 									placeholder="Nom d'utilisateur">
+                            <!-- Debut de modifications -->
 
 								<!-- Affichage de l'erreur pour userName -->
-								<span class="erreur">${errorList.get('userName')}</span> <input
-									name="password" type="password"
-									class="form-control center-block tm-max-w-400" id="password"
-									placeholder="Mot de pass">
-
-								<!-- Affichage de l'erreur pour password -->
-								<span class="erreur">${errorList.get('password')}</span>
-
-
-							</div>
+                                <c:if test="${not empty errors['userName']}">
+                                    <span class="erreur">${errors['userName']}</span>
+                                </c:if>
+                                <input name="password" type="password" class="form-control center-block tm-max-w-400" id="password" placeholder="Mot de passe">
+                                <!-- Affichage de l'erreur pour password -->
+                                <c:if test="${not empty errors['password']}">
+                                    <span class="erreur">${errors['password']}</span>
+                                </c:if>
+                                <!-- Affichage des erreurs de connexion générales -->
+                                <c:if test="${not empty errors['loginError']}">
+                                    <div class="erreur">${errors['loginError']}</div>
+                                </c:if>
+                                <c:if test="${not empty errors['userNameError']}">
+                                    <div class="erreur">${errors['userNameError']}</div>
+                                </c:if>
+                                <c:if test="${not empty errors['passwordError']}">
+                                    <div class="erreur">${errors['passwordError']}</div>
+                                </c:if>
+                            </div>
+                            <!-- Fin de modifications -->
+                            
 							<button type="submit" class="cd-btn">Commencer a Jouer</button>
 							<p></p>
 							<p class="m-b-mid">
