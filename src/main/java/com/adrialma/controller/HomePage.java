@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.adrialma.dao.UserDAO;
 import com.adrialma.model.User;
@@ -40,34 +41,28 @@ public class HomePage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		System.out.println("Level played : " + request.getParameter("level"));
-		
-		//TODO recuperer les infos  du joueur
-		//a changer par salma
-		UserDAO userDAO = new UserDAO(); //TODO a modifier, cree une user temporel (a changer pour l'info du joueur logged in)
-		User userLogged= userDAO.get("gartles");//TODO a modifier, cree une user temporel (a changer pour l'info du joueur logged in)
-		
-		request.getSession().setAttribute("currentUser", userLogged);//mettre user dans la session
-		
-		//pour recuperer le user logged
-		//userLogged = request.getSession().getAttribute("currentUser");//à modifier par salma
-		
-		
-		// init Game
-		userLogged.play(Integer.parseInt(request.getParameter("level")) );
-	
-		// montrer la view (afficher userName)
-		
-		
-		doGet(request, response);
-	}
-	
-	
-	
-	
-	
+		System.out.println("Level played: " + request.getParameter("level"));
 
+		// Récupération de la session HTTP
+		HttpSession session = request.getSession();
+
+		// Récupération de l'utilisateur connecté depuis la session
+		User userLogged = (User) session.getAttribute("user");
+		System.out.println(userLogged);
+
+		if (userLogged == null) {
+			// Si aucun utilisateur n'est connecté, redirection vers la page de connexion
+			response.sendRedirect("loginPage.jsp");
+		} else {
+			// Si un utilisateur est connecté, exécution de la logique de jeu
+			userLogged.play(Integer.parseInt(request.getParameter("level")));
+
+			// Mise à jour de l'attribut "currentUser" dans la session avec l'utilisateur connecté 
+			session.setAttribute("user", userLogged);
+
+			// Transfert de la requête et de la réponse à la JSP pour affichage
+			doGet(request, response);
+		}
+
+	}
 }

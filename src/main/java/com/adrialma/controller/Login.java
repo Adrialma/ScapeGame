@@ -1,5 +1,6 @@
 package com.adrialma.controller;
 
+import java.awt.desktop.SystemEventListener;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.adrialma.dao.UserDAO;
 import com.adrialma.form.LoginForm;
+import com.adrialma.model.User;
 
 /**
  * Servlet implementation class Login
@@ -47,8 +50,13 @@ public class Login extends HttpServlet {
 
 		if (loginForm.getErrorList().isEmpty()) {
 			// Connexion réussie
-			HttpSession session = request.getSession();
-			session.setAttribute("user", loginForm.getUser()); // Stocker l'utilisateur dans la session
+			//HttpSession session = request.getSession();
+			//session.setAttribute("user", loginForm.getUser()); // Stocker l'utilisateur dans la session
+			request.getSession().setAttribute("user", loginForm.getUser());
+
+			//System.out.println(request.getSession().getAttribute("user"));
+			User user2 = (User) request.getSession().getAttribute("user");
+			System.out.println("user2 " + user2);
 
 			// Rediriger vers la page d'accueil 
 			this.getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").
