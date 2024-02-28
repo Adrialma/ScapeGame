@@ -46,13 +46,14 @@ public class HomePage extends HttpServlet {
 		System.out.println("Level played : " + request.getParameter("level"));
 		
 		//TODO recuperer les infos  du joueur
+		//a changer par salma
 		UserDAO userDAO = new UserDAO(); //TODO a modifier, cree une user temporel (a changer pour l'info du joueur logged in)
 		User userLogged= userDAO.get("gartles");//TODO a modifier, cree une user temporel (a changer pour l'info du joueur logged in)
 		
-		request.getSession().setAttribute("currentUser", userLogged);
+		request.getSession().setAttribute("currentUser", userLogged);//mettre user dans la session
 		
 		//pour recuperer le user logged
-		//request.getSession().getAttribute("currentUser");
+		//userLogged = request.getSession().getAttribute("currentUser");//à modifier par salma
 		
 		
 		// init Game
