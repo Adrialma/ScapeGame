@@ -1,0 +1,46 @@
+body {
+	margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/backEnigme2.jpg'); /* Chemin vers votre image de fond */
+    background-color: black;
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    height: 100vh; /* Définit la hauteur de l'élément body à 100% de la hauteur de la fenêtre visible */
+    display: flex; /* Utilise Flexbox pour centrer le contenu verticalement */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    color: white; /* Couleur du texte */
+}
+
+.erreur{
+    position: absolute;
+    top: 0px; 
+    left: 0px;
+    color:yellow;
+    background-color: #000000;
+    opacity: .8;
+    border-radius: 10px;
+
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Centrer les éléments et maintenir de l'espace autour */
+}
+
+.img-wrapper {
+    flex: 0 1 48%; /* Chaque élément prendra jusqu'à 48% de l'espace disponible */
+    margin-bottom: 20px; /* Espacement vertical entre les lignes */
+    box-sizing: border-box;
+}
+
+.clear {
+    flex-basis: 80%;
+    height: 0;
+}
+
+img {
+    width: 20%; /* Les images prennent toute la largeur du conteneur */
+    height: auto; /* Garder les proportions des images */
+}
