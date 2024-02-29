@@ -17,8 +17,6 @@ import com.adrialma.model.User;
 @WebServlet("/HomePage")
 public class HomePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -59,9 +57,11 @@ public class HomePage extends HttpServlet {
 
 			// Mise à jour de l'attribut "currentUser" dans la session avec l'utilisateur connecté 
 			session.setAttribute("user", userLogged);
-
+			session.setAttribute("indexPuzzle", 0);
+			
 			// Transfert de la requête et de la réponse à la JSP pour affichage
-			doGet(request, response);
+			this.getServletContext().getRequestDispatcher("/Enigme").
+			forward(request, response);
 		}
 
 	}

@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.adrialma.model.Puzzle;
+import com.adrialma.model.User;
 
 /**
  * Servlet implementation class Enigme
@@ -27,8 +31,7 @@ public class Enigme extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme1.jsp").
-		forward(request, response);
+		doPost(request, response);
 		
 		
 	}
@@ -37,10 +40,66 @@ public class Enigme extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		// Récupération de la session HTTP
+		HttpSession session = request.getSession();
+				
+				
+		int puzzleToPlay = (int) session.getAttribute("indexPuzzle"); //counter recupere l'index du puzzle a jouer
+		User user = (User) session.getAttribute("user");
 		String answer=request.getParameter("answer");
-		System.out.println(answer);
-		doGet(request, response);
+		
+		System.out.println("User Playing : " + user);
+		System.out.println("Answer : " + answer);
+		System.out.println("Counter: " + puzzleToPlay);
+		
+		if (user == null) {response.sendRedirect("loginPage.jsp"); } 
+			
+
+		if (answer==null) {   // Jouer un nouveau puzzle
+			if (puzzleToPlay == user.getSingleGame().getPuzzles().size() ) { //si c'est le dernier puzzle on affiche le score
+				System.out.println("*** Fin de Puzzles ****");
+				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeScore.jsp").
+				forward(request, response);
+				
+			}else {
+				
+				// afficher un nouveau puzzle
+				Puzzle currentPuzzle = user.getSingleGame().getPuzzles().get(puzzleToPlay);
+				request.getSession().setAttribute("indexPuzzle", puzzleToPlay + 1);  //augmenter la valeur de l'index du puzzle 
+				/**************/
+				
+				System.out.println("User playing new puzzle: /WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp");
+				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").
+				forward(request, response);
+				
+			}
+				
+			
+			
+		}else {
+			
+			// C'est pas un nouveau jeu, l'utilisateur a saisie une reponse
+			// verifier que la reponse est correcte
+			Puzzle currentPuzzle = user.getSingleGame().getPuzzles().get(puzzleToPlay-1);
+			if (currentPuzzle.checkAnswer(answer)) {
+				// afficher page de sortie de l'enigme
+				System.out.println("Response Correcte");
+				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeSuivant.jsp").
+				forward(request, response);
+			}else {
+				//afficher message reponse incorrecte
+				request.setAttribute("messageErreur", " Vous ne pouvez pas sortir de cette chambre, essayez autre chose !!! ");
+				System.out.println("Response Incorrecte, Reponse correcte: " + currentPuzzle.getAnswer());
+				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").
+				forward(request, response);
+			}
+			
+		}
+		
+		
+
 	}
+	
 
 }

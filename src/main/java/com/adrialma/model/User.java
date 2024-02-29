@@ -7,6 +7,9 @@ import com.adrialma.dao.PuzzleDAO;
 import java.util.ArrayList;
 import java.security.MessageDigest;
 
+/**
+ * 
+ */
 public class User {
 	private int idUser;
 	private String firstName;
@@ -107,6 +110,22 @@ public class User {
 		
 
 	}
+	
+	
+	
+	/**
+	 * Fonction pour recuperer un Single Game quand l'utilisateur est en mode play
+	 * @return l'element Game actual, null si il y a plusiers Games dans la list
+	 */
+	public Game getSingleGame() {
+		if (games.size()==1)
+			return games.get(0);
+		else
+			return null;
+		
+	}
+	
+	
 
 	// Getters et Setters pour les champs nécessaires
 	public int getIdUser() {

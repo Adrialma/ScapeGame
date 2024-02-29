@@ -1,3 +1,5 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +10,8 @@
 <title>Scape Game</title>
 </head>
 <body>
+
+	<div class="erreur"> <h3>${messageErreur }</h3> </div>
 
 
 	<div class="mainContainer">

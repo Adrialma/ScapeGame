@@ -65,6 +65,104 @@ public class Game {
 		
 		
 	}
+
+	/***************** Getters and Setters****************************/
+
+	public int getIdGame() {
+		return idGame;
+	}
+
+
+
+	public void setIdGame(int idGame) {
+		this.idGame = idGame;
+	}
+
+
+
+	public Date getDate() {
+		return date;
+	}
+
+
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+
+
+	public Date getStart() {
+		return start;
+	}
+
+
+
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
+
+
+	public Date getFin() {
+		return fin;
+	}
+
+
+
+	public void setFin(Date fin) {
+		this.fin = fin;
+	}
+
+
+
+	public int getScore() {
+		return score;
+	}
+
+
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+
+
+	public List<Puzzle> getPuzzles() {
+		return puzzles;
+	}
+
+
+
+	public void setPuzzles(List<Puzzle> puzzles) {
+		this.puzzles = puzzles;
+	}
+
+
+
+	public int getLevelPlayed() {
+		return levelPlayed;
+	}
+
+
+
+	public void setLevelPlayed(int levelPlayed) {
+		this.levelPlayed = levelPlayed;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Game [idGame=" + idGame + ", date=" + date + ", start=" + start + ", fin=" + fin + ", score=" + score
+				+ ", puzzles=" + puzzles + ", levelPlayed=" + levelPlayed + "]";
+	}
+	
+	
+
+	
+	
+	
 	
 	
 	
