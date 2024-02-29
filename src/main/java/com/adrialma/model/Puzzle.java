@@ -1,5 +1,8 @@
 package com.adrialma.model;
 
+/**
+ * 
+ */
 public class Puzzle {
 	private int idPuzzle;
 	private String description;
@@ -44,14 +47,114 @@ public class Puzzle {
 		//100                    1/level
 	}
 	
-	public boolean checkAnswer() {
-		//todo
-		//vérification de la réponse
-		return false;// à modifier
+	
+	
+	
+	/**
+	 * Vérification de la réponse saissie par l'utilisateur
+	 * 
+	 * @param userAnswer - response de l'utilisateur
+	 * @return true si response est correcte, false en cas contraire
+	 */
+	public boolean checkAnswer(String userAnswer) {
+	
+		if (userAnswer.equals(answer))
+			return true;
+		else
+			return false;
 	}
 
 	
 	
+	
+	
+	
+	
+	
+	public int getIdPuzzle() {
+		return idPuzzle;
+	}
+
+
+
+
+	public void setIdPuzzle(int idPuzzle) {
+		this.idPuzzle = idPuzzle;
+	}
+
+
+
+
+	public String getDescription() {
+		return description;
+	}
+
+
+
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+
+
+
+	public int getLevel() {
+		return level;
+	}
+
+
+
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+
+
+
+	public String getAnswer() {
+		return answer;
+	}
+
+
+
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
+
+
+
+	public int getTime() {
+		return time;
+	}
+
+
+
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+
+
+
+	public int getScorePuzzle() {
+		return scorePuzzle;
+	}
+
+
+
+
+	public void setScorePuzzle(int scorePuzzle) {
+		this.scorePuzzle = scorePuzzle;
+	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Puzzle [idPuzzle=" + idPuzzle + ", description=" + description + ", level=" + level + ", answer="

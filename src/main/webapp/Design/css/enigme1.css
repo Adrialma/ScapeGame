@@ -42,6 +42,17 @@ img{
     display: inline-block;
 }
 
+.erreur{
+	position: absolute;
+	top: 0px; 
+	left: 0px;
+	color:yellow;
+	background-color: #000000;
+	opacity: .8;
+	border-radius: 10px;
+	
+}
+
 /**************************************/
 
 .flotante {
@@ -113,7 +124,7 @@ img{
 /* Boton */
 .botonAzul {
   border-radius: 10px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.5em 1.5em;
   background-color: #0099cb;
 border: none;
@@ -135,5 +146,5 @@ background-color: #58BEDF;
 }
 /******************** Input box*********************/
 input{
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
