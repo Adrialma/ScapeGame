@@ -23,6 +23,20 @@ body
 
 }
 
+
+.erreur{
+	position: absolute;
+	top: 0px; 
+	left: 0px;
+	color:yellow;
+	background-color: #000000;
+	opacity: .8;
+	border-radius: 10px;
+	z-index: 7;
+	
+}
+
+
 .container
 {
   display: flex;

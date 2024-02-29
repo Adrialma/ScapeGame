@@ -156,7 +156,7 @@
             <span></span>
             <div class="content">
               <h2>Lis moi</h2>
-              <p> Piste de l'enigme: (1) - (2) - (7), Bonne chance !!!</p>
+              <p> Piste de l'enigme: (1) - (7) - (9), Bonne chance !!!</p>
               
             </div>
         </div>
