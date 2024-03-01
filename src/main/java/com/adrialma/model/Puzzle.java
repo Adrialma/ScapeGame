@@ -1,5 +1,10 @@
 package com.adrialma.model;
 
+import java.time.LocalTime;
+import java.util.Date;
+
+import org.apache.tomcat.jdbc.pool.interceptor.StatementDecoratorInterceptor;
+
 /**
  * 
  */
@@ -8,7 +13,8 @@ public class Puzzle {
 	private String description;
 	private int level; // Peut être représenté par un String (ex: "Facile = 3", "Moyen = 2", "Difficile= 1")
 	private String answer;// la soulution de l'énigme 
-	
+	private LocalTime timeStart; // L'heure de début de l'enigme
+    private LocalTime timeFin; // L'heure de fin de l'enigme
 	private int time; // Le temps passé dans l'énigme en secondes
 	private int scorePuzzle;//stocke le resultat calculé avec la méthode scoreCalculate
 	
@@ -35,10 +41,13 @@ public class Puzzle {
 
 
 
+	 
 
 	public void scoreCalculate(){
 		//todo 
+		//int time = int (timeFin - timeStart);//TODO
 		//calcule du score en fonction du temps passé sur la session et le niveau de defficulté
+		//scoorPuzzle = time/level;
 		//time                 ScorePuzzle
 		//1 sec                  100 /level
 		//2                      99/level
@@ -150,6 +159,34 @@ public class Puzzle {
 
 	public void setScorePuzzle(int scorePuzzle) {
 		this.scorePuzzle = scorePuzzle;
+	}
+
+
+
+
+	public LocalTime getTimeStart() {
+		return timeStart;
+	}
+
+
+
+
+	public void setTimeStart(LocalTime timeStart) {
+		this.timeStart = timeStart;
+	}
+
+
+
+
+	public LocalTime getTimeFin() {
+		return timeFin;
+	}
+
+
+
+
+	public void setTimeFin(LocalTime timeFin) {
+		this.timeFin = timeFin;
 	}
 
 
