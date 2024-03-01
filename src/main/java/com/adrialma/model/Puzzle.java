@@ -2,9 +2,6 @@ package com.adrialma.model;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Date;
-
-import org.apache.tomcat.jdbc.pool.interceptor.StatementDecoratorInterceptor;
 
 /**
  * 
@@ -41,8 +38,7 @@ public class Puzzle {
 	}
 
 
-
-	 
+	
 
 	//méthode pour récupérer le timeStart
 	public void startPuzzle() {
@@ -62,6 +58,7 @@ public class Puzzle {
     public void scoreCalculate() {
     	scorePuzzle = (100 - time + 1) / level;
     }
+
 	
 	
 	
