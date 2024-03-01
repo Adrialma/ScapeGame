@@ -9,6 +9,7 @@
 <body>
 <div class="erreur"> <h3>${messageErreur }</h3> </div>
 
+<!-- A changer -->
 <div class="gallery">
     <% for(int i = 1; i <= 6; i++) { %>
     <div class="img-wrapper">

@@ -49,6 +49,7 @@ public class Game {
 		score = score/puzzles.size();
 		
 		
+
 	}
 	
 	
