@@ -14,7 +14,7 @@ body
   min-height: 100vh;
   background: #1d061a;
 
-  background-image: url('../img/backEnigme2.png'); /* Chemin vers votre image de fond */
+  background-image: url('../img/backEnigme2.jpg'); /* Chemin vers votre image de fond */
   background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble de l'écran */
   background-position: center; /* Centre l'image */
   background-repeat: no-repeat; /* Empêche la répétition de l'image */
