@@ -41,6 +41,12 @@ public class Game {
 		//todo
 		//calcule de la moyenne des scores obtenus dans la classe Puzzle
 		//score = sum scorePuzzle/nbr de puzzle
+		
+		for (Puzzle puzzle: puzzles) {
+			puzzle.scoreCalculate();
+			score += puzzle.getScorePuzzle();
+		}
+		score = score/puzzles.size();
 	}
 	
 	
