@@ -1,9 +1,6 @@
 package com.adrialma.model;
 
 import java.time.LocalTime;
-import java.util.Date;
-
-import org.apache.tomcat.jdbc.pool.interceptor.StatementDecoratorInterceptor;
 
 /**
  * 
@@ -40,20 +37,10 @@ public class Puzzle {
 	}
 
 
-
-	 
+	
 
 	public void scoreCalculate(){
-		//todo 
-		//int time = int (timeFin - timeStart);//TODO
-		//calcule du score en fonction du temps passé sur la session et le niveau de defficulté
-		//scoorPuzzle = time/level;
-		//time                 ScorePuzzle
-		//1 sec                  100 /level
-		//2                      99/level
-		//...                        ...          .
-		//99                      2/level
-		//100                    1/level
+
 	}
 	
 	
