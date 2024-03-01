@@ -85,6 +85,7 @@ public class Enigme extends HttpServlet {
 			
 			Puzzle currentPuzzle = user.getSingleGame().getPuzzles().get(puzzleToPlay-1);
 			currentPuzzle.endPuzzle();
+			System.out.println("L'user a passé : " + currentPuzzle.getTime() + " secondes ");
 			
 			// Si il a depasé le temps l'utilisateur a perdu
 			if(currentPuzzle.getTime() > 100) {

@@ -44,9 +44,12 @@ public class Game {
 		
 		for (Puzzle puzzle: puzzles) {
 			puzzle.scoreCalculate();
-			score += puzzle.getScorePuzzle();
-		}
+			score +=puzzle.getScorePuzzle();
+			}
 		score = score/puzzles.size();
+		
+		
+
 	}
 	
 	
