@@ -1,7 +1,7 @@
 function sendAnswer(imageId) {
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'Enigme'; // Assurez-vous que le mapping de servlet est correct
+    form.action = 'Enigme'; // mapping de servlet
 
     const hiddenField = document.createElement('input');
     hiddenField.type = 'hidden';
