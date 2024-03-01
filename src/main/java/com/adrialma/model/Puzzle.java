@@ -1,5 +1,6 @@
 package com.adrialma.model;
 
+import java.time.Duration;
 import java.time.LocalTime;
 
 /**
@@ -39,10 +40,25 @@ public class Puzzle {
 
 	
 
-	public void scoreCalculate(){
+	//méthode pour récupérer le timeStart
+	public void startPuzzle() {
+        timeStart = LocalTime.now();
+    }
 
-	}
-	
+	//méthode pour récupérer le timeFin et calculer time 
+	public int endPuzzle() {
+        timeFin = LocalTime.now();
+        Duration duration = Duration.between(timeStart, timeFin);
+        time = (int) duration.getSeconds(); // Calcul du temps en secondes
+        return time;
+    }
+
+
+    //méthode pour calculer le scorePuzzle
+    public void scoreCalculate() {
+    	scorePuzzle = (100 - time + 1) / level;
+    }
+
 	
 	
 	
