@@ -7,6 +7,7 @@
 <title>Scores ScapeGame</title>
 </head>
 <body>
-<h1>Scores du joueur</h1>
+<h1>Scores du joueur ${puzzle.scorePuzzle}</h1>
+
 </body>
-</html>
+</html> 
