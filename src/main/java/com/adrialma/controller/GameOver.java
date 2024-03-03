@@ -13,22 +13,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GameOver")
 public class GameOver extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GameOver() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public GameOver() {
+		super();
+		// Constructeur par défaut
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO clean session, user et tout
-		
-		
+		// Cette ligne peut contenir du code pour nettoyer les données de session ou effectuer d'autres tâches liées à la fin du jeu
+
+		// Redirige vers la page GameOver.jsp
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/GameOver.jsp").forward(request, response);
 	}
 

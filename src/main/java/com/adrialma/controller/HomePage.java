@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.adrialma.dao.UserDAO;
 import com.adrialma.model.User;
 
 /**
@@ -17,14 +16,14 @@ import com.adrialma.model.User;
 @WebServlet("/HomePage")
 public class HomePage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public HomePage() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public HomePage() {
+		super();
+		// Constructeur par défaut
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,6 +38,7 @@ public class HomePage extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Affiche le niveau joué dans la console
 		System.out.println("Level played: " + request.getParameter("level"));
 
 		// Récupération de la session HTTP
@@ -58,11 +58,10 @@ public class HomePage extends HttpServlet {
 			// Mise à jour de l'attribut "currentUser" dans la session avec l'utilisateur connecté 
 			session.setAttribute("user", userLogged);
 			session.setAttribute("indexPuzzle", 0);
-			
+
 			// Transfert de la requête et de la réponse à la JSP pour affichage
 			this.getServletContext().getRequestDispatcher("/Enigme").
 			forward(request, response);
 		}
-
 	}
 }
