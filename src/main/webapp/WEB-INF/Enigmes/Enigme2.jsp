@@ -13,6 +13,7 @@
 	<div class="erreur">
 		<h3>${messageErreur }</h3>
 	</div>
+<p><h2>Trouvez l'intrus!</h2></p>
 
 	<div class="container">
 		<div class="box">
@@ -55,24 +56,6 @@
 			<span></span>
 			<div class="content">
 				<p>
-					<img src="Design/img/tableaux/3.png" alt=""
-						onclick="sendAnswer('3')" />
-				</p>
-			</div>
-		</div>
-		<div class="box">
-			<span></span>
-			<div class="content">
-				<p>
-					<img src="Design/img/tableaux/4.png" alt=""
-						onclick="sendAnswer('4')" />
-				</p>
-			</div>
-		</div>
-		<div class="box">
-			<span></span>
-			<div class="content">
-				<p>
 					<img src="Design/img/tableaux/5.png" alt=""
 						onclick="sendAnswer('5')" />
 				</p>
@@ -86,10 +69,8 @@
 						onclick="sendAnswer('6')" />
 				</p>
 			</div>
-		</div>
-		
+		</div>	
 	</div>
-
 	<script src="Design/js/enigmes/enigme2.js"></script>
 </body>
 </html>

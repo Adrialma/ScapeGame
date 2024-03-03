@@ -86,25 +86,41 @@ public class User {
 	// Méthode pour jouer à un jeu avec un niveau de difficulté spécifié
 	public void play(int level) {
 		System.out.println("User.play() method initialized"); //TODO a effacer
+		// Vérifie s'il y a un jeu en cours et le termine si nécessaire
+        if (!games.isEmpty() && getSingleGame() != null) {
+            getSingleGame().exec(); // Calcule le score final du jeu actuel
+        }
 		// Création d'un nouveau jeu avec les énigmes du niveau de difficulté choisi
 		Game newGame = new Game();
 		newGame.getPuzzels(level);
 		games.add(newGame);
 	}
 
-
-
 	/**
 	 * Fonction pour recuperer un Single Game quand l'utilisateur est en mode play
 	 * @return l'element Game actual, null si il y a plusiers Games dans la list
 	 */
-	public Game getSingleGame() {
+	/*public Game getSingleGame() {
 		if (games.size()==1)
 			return games.get(0);
 		else
 			return null;
 
+	}*/
+	
+	public Game getSingleGame() {
+        return games.isEmpty() ? null : games.get(games.size() - 1);
+    }
+	
+	public void setSingleGame(Game currentGame) {
+	    // Si la liste des jeux est vide ou le dernier jeu n'est pas actif, ajoutez le nouveau jeu
+	    if (games.isEmpty() || !games.get(games.size() - 1).equals(currentGame)) {
+	        games.add(currentGame);
+	    } else {
+	        // Si le dernier jeu de la liste est déjà le jeu actuel, cette méthode peut être utilisée pour mettre à jour ses informations si nécessaire
+	    }
 	}
+
 
 	// Getters et Setters
 	public int getIdUser() {
@@ -159,6 +175,8 @@ public class User {
 	public void setIsconnected(Boolean isconnected) {
 		this.isconnected = isconnected;
 	}
+	
+	
 
 	@Override
 	public String toString() {

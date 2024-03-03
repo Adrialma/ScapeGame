@@ -37,7 +37,15 @@ img{
     width: 78px;
 }
 
-
+p{
+	color:#FFD700;
+	position: absolute;
+	top: 0px; 
+	left: 0px;
+	background-color: #000000;
+	opacity: .8;
+	border-radius: 10px;
+}
 .int{
     display: inline-block;
 }
