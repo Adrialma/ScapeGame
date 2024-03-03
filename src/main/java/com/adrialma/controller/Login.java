@@ -1,15 +1,12 @@
 package com.adrialma.controller;
 
-import java.awt.desktop.SystemEventListener;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.adrialma.dao.UserDAO;
 import com.adrialma.form.LoginForm;
 import com.adrialma.model.User;
 
@@ -68,10 +65,8 @@ public class Login extends HttpServlet {
 
 			// Re-afficher la page de login avec les erreurs
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response); 
-
 		}
 	}
-
 }
 
 

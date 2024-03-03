@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../img/EnigmeScore.jpg'); /* Chemin vers votre image de fond */
+    background-size: cover; /* Ajuste la taille de l'image pour couvrir l'ensemble de l'écran */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    height: 100vh; /* Définit la hauteur de l'élément body à 100% de la hauteur de la fenêtre visible */
+    display: flex; /* Utilise Flexbox pour centrer le contenu verticalement */
+    justify-content: center; /* Centre le contenu horizontalement */
+    align-items: center; /* Centre le contenu verticalement */
+    color: white; /* Couleur du texte */
+}
+
+.mainContainer {
+    text-align: center;
+    color: yellow;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.mainContainer h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.mainContainer p {
+    font-size: 1.5em;
+}
+
+/***********************************************/
+/* Boton */
+.botonAzul {
+border-radius: 10px;
+font-size: 1rem;
+padding: 0.5em 1.5em;
+background-color: #0099cb;
+border: none;
+color: rgb(5, 5, 5);
+text-transform: capitalize;
+margin-top: 0;
+}
+
+.botonAzul:hover,
+.botonAzul:focus {
+background-color: #58BEDF;
+}
+
+#containerBoton{
+  text-align: center; /* Centre le contenu horizontalement */
+}

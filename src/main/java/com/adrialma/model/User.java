@@ -1,14 +1,11 @@
 package com.adrialma.model;
 
 import java.util.List;
-
-import com.adrialma.dao.PuzzleDAO;
-
 import java.util.ArrayList;
 import java.security.MessageDigest;
 
 /**
- * 
+ * La classe User représente un utilisateur du système.
  */
 public class User {
 	private int idUser;
@@ -28,19 +25,18 @@ public class User {
 		this.setPassword(password); //Chiffre et définit le mot de passe
 		this.games = games;
 	}
-	
-	public User(int idUser, String firstName, String lastName, String userName, String password) {
-        super();
-        this.idUser = idUser;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.userName = userName;
-		this.setPassword(password); //Chiffre et définit le mot de passe
-    }
-	
-	
-	
 
+	// Constructeur sans la liste des jeux
+	public User(int idUser, String firstName, String lastName, String userName, String password) {
+		super();
+		this.idUser = idUser;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userName = userName;
+		this.setPassword(password); //Chiffre et définit le mot de passe
+	}
+
+	// Constructeur pour un utilisateur avec mot de passe déjà chiffré
 	public User(int idUser, String firstName, String lastName, String userName, String password, boolean hassPassword) {
 		super();
 		this.idUser = idUser;
@@ -74,19 +70,8 @@ public class User {
 
 	// Vérifie si le mot de passe fourni correspond au mot de passe chiffré de l'utilisateur
 	public boolean checkPassword(String candidate) {
-		/*
-		boolean check = false;
-		System.out.println(candidate);
-		if ( password.equals(hashPassword(candidate)) )
-			check=true;
-		System.out.println("Check ->" + check);
-		System.out.println(password);
-		System.out.println(hashPassword(candidate));
-		return check; */
 		return this.password.equals(hashPassword(candidate));
-		
 	}
-
 
 	// Connecte l'utilisateur
 	public void connect() {
@@ -98,21 +83,17 @@ public class User {
 		this.isconnected = false;
 	}
 
-	
-	
+	// Méthode pour jouer à un jeu avec un niveau de difficulté spécifié
 	public void play(int level) {
-		
 		System.out.println("User.play() method initialized"); //TODO a effacer
-		//Creer un nouveau Game avec les puzzles de la dificulté choissi
+		// Création d'un nouveau jeu avec les énigmes du niveau de difficulté choisi
 		Game newGame = new Game();
 		newGame.getPuzzels(level);
 		games.add(newGame);
-		
-
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Fonction pour recuperer un Single Game quand l'utilisateur est en mode play
 	 * @return l'element Game actual, null si il y a plusiers Games dans la list
@@ -122,12 +103,10 @@ public class User {
 			return games.get(0);
 		else
 			return null;
-		
-	}
-	
-	
 
-	// Getters et Setters pour les champs nécessaires
+	}
+
+	// Getters et Setters
 	public int getIdUser() {
 		return idUser;
 	}
@@ -186,7 +165,4 @@ public class User {
 		return "User [idUser=" + idUser + ", firstName=" + firstName + ", lastName=" + lastName + ", userName="
 				+ userName + ", password=" + password + ", games=" + games + ", isconnected=" + isconnected + "]";
 	}
-	
-	
-
 }

@@ -49,33 +49,37 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 	public ArrayList<Puzzle> getArray(int x) {
 		// TODO Auto-generated method stub
 		int level = x;
-		
-		
+
+		// Construction de la requête SQL pour récupérer les puzzles d'un certain niveau
 		String sql =  "SELECT * FROM puzzle WHERE level = '" + level+"'" ;
+
+		// Création d'une liste pour stocker les puzzles récupérés
 		ArrayList<Puzzle> list = new ArrayList<Puzzle>();
+
 		try {
+			// Exécution de la requête SQL
 			System.out.println(sql);
 			Statement smt = DaoBd.getCn().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY) ;
 			ResultSet rs = smt.executeQuery(sql) ;
-			while (rs.next()) {									// (La lecture des données retournées se fait toujours ligne par ligne... 
-																// ... Ici de la 1ère à la dernière). Ainsi Tant qu'il y a des lignes de résultats retournés...
-				Puzzle s = new Puzzle(rs.getInt("idPuzzle"),		// ... création d'un nouvel objet Salarie
+
+			// Parcours des résultats de la requête et création d'objets Puzzle correspondants
+			while (rs.next()) {									 			
+				Puzzle s = new Puzzle(rs.getInt("idPuzzle"),		
 						rs.getString("description"),
 						rs.getInt("level"),
 						rs.getString("answer"));
-				list.add(s);
+				list.add(s); // Ajout du puzzle à la liste
 			}
+
+			// Fermeture du ResultSet et du Statement
 			rs.close();
 			smt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    
-		return list;
-		
 
+		return list; // Retourne la liste des puzzles récupérés
 	}
-
 }
