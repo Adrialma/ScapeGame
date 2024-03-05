@@ -42,7 +42,8 @@ public class Game {
 			puzzle.scoreCalculate(); // Calcul du score pour chaque puzzle
 			score += puzzle.getScorePuzzle(); // Addition des scores de chaque puzzle
 		}
-		score = score / puzzles.size(); // Calcul de la moyenne
+		
+			score = score / puzzles.size(); // Calcul de la moyenne
 	}
 
 	/**

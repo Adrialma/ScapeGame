@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="erreur"> <h3>${messageErreur }</h3> </div>
-<p><h2>Devinez le chiffre manquant!</h2></p>
+
 
 
 	<div class="mainContainer">
