@@ -120,6 +120,11 @@ public class User {
 	        // Si le dernier jeu de la liste est déjà le jeu actuel, cette méthode peut être utilisée pour mettre à jour ses informations si nécessaire
 	    }
 	}
+	
+	
+	public void flushGames() {
+		this.games =new ArrayList<>();
+	}
 
 
 	// Getters et Setters
