@@ -44,8 +44,6 @@ public class Enigme extends HttpServlet {
 			
 		}else
 		doPost(request, response);
-
-
 	}
 
 	/**
@@ -95,16 +93,8 @@ public class Enigme extends HttpServlet {
 	            // Gestion de la réponse soumise
 	            handlePuzzleResponse(request, response, user, currentGame, puzzleToPlay, answer);
 	        }
-			
-			
-		}
-		
-		        
-		
-		
-    }
-	
-	
+	  	}
+  }	
 	
 	private void handlePuzzleDisplay(HttpServletRequest request, HttpServletResponse response, User user, Game currentGame, int puzzleToPlay) throws ServletException, IOException {
         if (puzzleToPlay >= currentGame.getPuzzles().size()) {
@@ -120,10 +110,7 @@ public class Enigme extends HttpServlet {
             getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").forward(request, response);
         }
     }
-    
 
-	
-	
 	private void handlePuzzleResponse(HttpServletRequest request, HttpServletResponse response, User user, Game currentGame, int puzzleToPlay, String answer) throws ServletException, IOException {
         Puzzle currentPuzzle = currentGame.getPuzzles().get(puzzleToPlay - 1);
         currentPuzzle.endPuzzle();
@@ -136,5 +123,4 @@ public class Enigme extends HttpServlet {
             getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").forward(request, response);
         }
     }
-	
 }

@@ -37,10 +37,6 @@ public class Register extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 			System.out.println("Pas de conexion a la BD, service non disponible");
 		}
-		
-		
-		
-		
 	}
 
 	/**
@@ -61,15 +57,9 @@ public class Register extends HttpServlet {
 			
 		}else { // erreur dans la conexion a la bd
 			System.out.println("Pas de conexion a la BD, service non disponible");
-			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
-			
+			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);	
 		}
-		
-		
-		
 	}
-	
-	
 	
 	public String traiterRequest(HttpServletRequest request) {
 		
@@ -82,14 +72,6 @@ public class Register extends HttpServlet {
 			//erreurs dans les donnes, afficher la page d'erreur
 			request.setAttribute("errorList", registerForm.getErrorList());
 			return "/WEB-INF/Register.jsp";
-
 		}
-		
-		
 	}
-	
-	
-	
-	
-	
 }

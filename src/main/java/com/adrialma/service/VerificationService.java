@@ -11,6 +11,7 @@ import com.adrialma.model.User;
 
 public class VerificationService {
 	
+
 	private String redirect ="";
 	
 	
@@ -47,9 +48,7 @@ public class VerificationService {
 		        // Verifier conexion
 		        DaoBd.conecter();
 		        if (DaoBd.getCn()!=null) 
-		        	isUp = true;
-		        
-		        
+		        	isUp = true;   
 		    }
 		    catch (IOException e)
 		    {
@@ -57,8 +56,7 @@ public class VerificationService {
 		        System.out.println("Server is down.... Envoyer vers la page d'erreur");
 		        DaoBd.closeConnection(); // appelle a la fonction close conection au cas ou il y aura une conexion active et le server down
 		    }
-		    
-			
+
 		return isUp; 
 		
 	}
@@ -83,11 +81,7 @@ public class VerificationService {
 	public String toString() {
 		return "VerificationService [redirect=" + redirect + "]";
 	}
-	
-	
-	
 
-	
 }
 	
 	

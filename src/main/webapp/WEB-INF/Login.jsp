@@ -24,16 +24,10 @@
 <link rel="stylesheet" href="Design/css/templatemo-style.css">
 <!-- Templatemo style -->
 
-
-
 </head>
 <body>
 	<section class="cd-hero">
 		<ul class="cd-hero-slider">
-
-
-
-
 			<!-- 
                 /////////////////////////////////////////
             	    Slider pour le LOG IN
@@ -42,21 +36,17 @@
                     TODO -- Changer l'atribut "action" dans la balise form
                             add method POST dans le form
             -->
-
 			<li class="selected">
 				<div class="cd-full-width">
 					<div class="tm-slide-content-div">
 						<form action="Login" id="search-form" method="POST">
-
 							<h2 class="text-uppercase">Log In</h2>
 							<p>Entrez dans le fantastique jeu d'evasion</p>
 							<div class="form-group">
-
 								<input name="userName" type="text"
 									class="form-control center-block tm-max-w-400" id="User"
 									placeholder="Nom d'utilisateur">
                             <!-- Debut de modifications -->
-
 								<!-- Affichage de l'erreur pour userName -->
                                 <c:if test="${not empty errors['userName']}">
                                     <span class="erreur">${errors['userName']}</span>
@@ -78,36 +68,26 @@
                                 </c:if>
                             </div>
                             <!-- Fin de modifications -->
-                            
 							<button type="submit" class="cd-btn">Commencer a Jouer</button>
 							<p></p>
 							<p class="m-b-mid">
 								<a href="#0" id="register">S'enregistrer</a>
 							</p>
 						</form>
-
 					</div>
 				</div> <!-- .cd-full-width -->
 			</li>
-
 			<!-- 
-                
-                
-                
-                
                 //////////////////////////////////
             	Slider pour l'Enregistrement
                 /////////////////////////////////////
-
                      TODO -- Changer l'atribut "action" dans la balise form
                              add method POST dans le form
                 -->
-
 			<li>
 				<div class="cd-full-width">
 					<div class="tm-slide-content-div">
 						<form action="Register" method="POST">
-
 							<h2 class="text-uppercase">S'enregistrer</h2>
 							<div class="form-group">
 								<input name="firstName" type="text"
@@ -127,31 +107,20 @@
 							<p class="m-b-mid">
 								<a href="#0" id="login">Log In</a>
 							</p>
-
-
 						</form>
 					</div>
 				</div> <!-- .cd-full-width -->
 			</li>
-
-
 			<!-- 
                 //////////////////////////////////
             	FIN SLIDERS
                 /////////////////////////////////////
-
                 -->
-
-
-
-
 		</ul>
 		<!-- .cd-hero-slider -->
-
 		<div class="cd-slider-nav">
 			<nav>
 				<span class="cd-marker item-1"></span>
-
 				<ul>
 					<li class="selected" id="logMe"><a href="#0"></a></li>
 					<li id="registerMe"><a href="#0"></a></li>
@@ -161,12 +130,6 @@
 		<!-- .cd-slider-nav -->
 	</section>
 	<!-- .cd-hero -->
-
-
-
-
-
-
 	<!-- load JS files -->
 	<script src="Design/js/jquery-1.11.3.min.js"></script>
 	<!-- jQuery (https://jquery.com/download/) -->
@@ -182,14 +145,12 @@
 	<script>
 		$(document).ready(
 				function() {
-
 					/* Auto play bootstrap carousel 
 					 * http://stackoverflow.com/questions/13525258/twitter-bootstrap-carousel-autoplay-on-load
 					-----------------------------------------------------------------------------------------*/
 					$('.carousel').carousel({
 						interval : 3000
 					})
-
 					/* Enable swiping carousel for tablets and mobile
 					 * http://lazcreative.com/blog/adding-swipe-support-to-bootstrap-carousel-3-0/
 					 ---------------------------------------------------------------------------------*/
@@ -208,7 +169,6 @@
 									threshold : 0
 								});
 					}
-
 					/* Handle window resize */
 					$(window).resize(
 							function() {
@@ -233,7 +193,5 @@
 							});
 				});
 	</script>
-
 </body>
 </html>
-
