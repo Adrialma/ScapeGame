@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.adrialma.form.RegisterForm;
+import com.adrialma.service.VerificationService;
 
 /**
  * Servlet implementation class Register
@@ -28,9 +29,18 @@ public class Register extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").
-		forward(request, response);
+		
+		VerificationService verifService = new VerificationService();
+		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
+			this.getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
+		}else {
+			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
+			System.out.println("Pas de conexion a la BD, service non disponible");
+		}
+		
+		
+		
+		
 	}
 
 	/**
@@ -43,21 +53,43 @@ public class Register extends HttpServlet {
 		System.out.println(request.getParameter("lastName"));
 		System.out.println(request.getParameter("userName"));
 		System.out.println(request.getParameter("password"));
-
+		
+		VerificationService verifService = new VerificationService();
+		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
+			String redirect = traiterRequest(request);
+			this.getServletContext().getRequestDispatcher(redirect).forward(request, response);	
+			
+		}else { // erreur dans la conexion a la bd
+			System.out.println("Pas de conexion a la BD, service non disponible");
+			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
+			
+		}
+		
+		
+		
+	}
+	
+	
+	
+	public String traiterRequest(HttpServletRequest request) {
+		
 		RegisterForm registerForm = new RegisterForm(request);
 		request.setAttribute("user", registerForm.getUser());
-
+		
 		if (registerForm.getErrorList().size()<1) {
-			// TODO enregistrer le user dans la bd et redirectioner sur le site de success enregistrement
-			// (il y pas eu d'erreur)
-
-			this.getServletContext().getRequestDispatcher("/WEB-INF/RegisterOK.jsp").
-			forward(request, response);
+			return "/WEB-INF/RegisterOK.jsp";
 		}else {
 			//erreurs dans les donnes, afficher la page d'erreur
 			request.setAttribute("errorList", registerForm.getErrorList());
-			doGet(request, response);
+			return "/WEB-INF/Register.jsp";
 
 		}
+		
+		
 	}
+	
+	
+	
+	
+	
 }
