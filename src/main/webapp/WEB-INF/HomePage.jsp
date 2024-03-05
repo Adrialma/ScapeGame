@@ -10,13 +10,11 @@
 <title>Scape Game</title>
 </head>
 <body>
-
 	<div class="mainContainer">
 		<h1>Selectioner le level a jouer</h1>
 		<h2>Bonjour ${user.userName}</h2>
 		<form action="HomePage" method="POST">
 			<fieldset>
-
 				<label class="container">Facile <input type="radio"
 					checked="checked" id="facile" name="level" value="3"> <span
 					class="checkmark"></span>
@@ -29,12 +27,8 @@
 				<div id="containerBoton">
 					<button class="botonAzul" type="submit">Commencer a Jouer</button>
 				</div>
-
-
-
 			</fieldset>
 		</form>
 	</div>
-
 </body>
 </html>

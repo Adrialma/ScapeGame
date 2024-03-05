@@ -7,9 +7,6 @@ import com.adrialma.dao.DaoBd;
 
 public class VerificationService {
 	
-	
-	
-	
 	public boolean isConectionBdOk() {
 		// Verifier que le serveur mysql est started
 		 boolean isUp = false;
@@ -22,27 +19,16 @@ public class VerificationService {
 		        // Verifier conexion
 		        DaoBd.conecter();
 		        if (DaoBd.getCn()!=null) 
-		        	isUp = true;
-		        
-		        
+		        	isUp = true;   
 		    }
 		    catch (IOException e)
 		    {
 		        System.out.println("Server is down.... Envoyer vers la page d'erreur");
 		    }
-			
-		return isUp; 
-		
+		return isUp; 	
 	}
-	
 	
 	public void isUserConected() {
 		
 	}
-
-	
-	
-	
-	
-
 }

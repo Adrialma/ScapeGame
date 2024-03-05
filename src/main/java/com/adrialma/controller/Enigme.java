@@ -33,8 +33,6 @@ public class Enigme extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
-
-
 	}
 
 	/**
@@ -60,7 +58,6 @@ public class Enigme extends HttpServlet {
         Game currentGame = user.getSingleGame();
         
      // Redirection vers la page d'accueil si aucun jeu n'est actif
-       // if (currentGame == null) {response.sendRedirect("HomePage.jsp"); }  
         if (currentGame == null || "restart".equals(request.getParameter("action"))) {
             // Redémarrer ou démarrer un nouveau jeu si aucun jeu actif ou action de redémarrage
             int level = Integer.parseInt(request.getParameter("level")); // Assumer que le niveau est passé en paramètre pour un nouveau jeu
@@ -74,28 +71,6 @@ public class Enigme extends HttpServlet {
 		int puzzleToPlay = (int) session.getAttribute("indexPuzzle"); //counter recupere l'index du puzzle a jouer
 		System.out.println("Counter: " + puzzleToPlay);
 
-		/*if (answer==null) {   // Si aucune réponse n'est soumise, on affiche le puzzle suivant ou le score si c'est le dernier puzzle
-			if (puzzleToPlay >= currentGame.getPuzzles().size() ) { //si c'est le dernier puzzle on affiche le score
-				System.out.println("*** Fin de Puzzles ****");
-				
-				 // Calcul du score en fin de jeu
-                currentGame.exec();
-                request.setAttribute("gameScore", currentGame.getScore());
-                System.out.println("gameScore");
-			     // Redirection vers la page de score si y'a plus de jeu
-				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeScore.jsp").forward(request, response);
-			}else {
-
-				// afficher un nouveau puzzle
-				Puzzle currentPuzzle = user.getSingleGame().getPuzzles().get(puzzleToPlay);
-				currentPuzzle.startPuzzle();
-
-				request.getSession().setAttribute("indexPuzzle", puzzleToPlay + 1);  //augmenter la valeur de l'index du puzzle 
-				
-				System.out.println("User playing new puzzle: /WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp");
-				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").forward(request, response);
-			}
-		}else {*/
 		if (answer == null) {
             // Gestion de l'affichage du puzzle ou de la fin du jeu
             handlePuzzleDisplay(request, response, user, currentGame, puzzleToPlay);
@@ -122,35 +97,6 @@ public class Enigme extends HttpServlet {
         }
     }
     
-	/*
-
-
-			// C'est pas un nouveau jeu, l'utilisateur a saisie une reponse
-			Puzzle currentPuzzle = user.getSingleGame().getPuzzles().get(puzzleToPlay-1);
-			currentPuzzle.endPuzzle();
-			System.out.println("L'user a passé : " + currentPuzzle.getTime() + " secondes ");
-
-			// Si il a depasé le temps l'utilisateur a perdu
-			if(currentPuzzle.getTime() > 100) {
-				System.out.println("L'utilisateur a depassé le temp, game over...");
-				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/GameOver.jsp").forward(request, response);
-			}
-
-			// verifier que la reponse est correcte
-			if (currentPuzzle.checkAnswer(answer)) {
-
-				// afficher page de sortie de l'enigme
-				System.out.println("Response Correcte");
-				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeSuivant.jsp").forward(request, response);
-			}else {
-
-				//afficher message reponse incorrecte
-				request.setAttribute("messageErreur", " Vous ne pouvez pas sortir de cette chambre, essayez autre chose !!! ");
-				System.out.println("Response Incorrecte, Reponse correcte: " + currentPuzzle.getAnswer());
-				this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").forward(request, response);
-			}		
-		}
-	}*/
 	private void handlePuzzleResponse(HttpServletRequest request, HttpServletResponse response, User user, Game currentGame, int puzzleToPlay, String answer) throws ServletException, IOException {
         Puzzle currentPuzzle = currentGame.getPuzzles().get(puzzleToPlay - 1);
         currentPuzzle.endPuzzle();
@@ -163,5 +109,4 @@ public class Enigme extends HttpServlet {
             getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").forward(request, response);
         }
     }
-	
 }

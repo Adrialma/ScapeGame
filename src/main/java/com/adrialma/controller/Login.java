@@ -38,9 +38,6 @@ public class Login extends HttpServlet {
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 			
 		}
-
-
-
 	}
 
 	/**
@@ -57,14 +54,7 @@ public class Login extends HttpServlet {
 			System.out.println("Pas de conexion a la BD, service non disponible");
 			this.getServletContext().getRequestDispatcher("/WEB-INF/OutOfService").forward(request, response);
 		}
-			
-			
-
 	}
-
-
-
-
 
 	public String traiterRequest(HttpServletRequest request) {
 
@@ -87,20 +77,5 @@ public class Login extends HttpServlet {
 			// Re-afficher la page de login avec les erreurs
 			return "/WEB-INF/Login.jsp";
 		}
-
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 }
-
-
