@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.adrialma.model.User;
+import com.adrialma.service.VerificationService;
 
 /**
  * Servlet implementation class HomePage
@@ -29,9 +30,12 @@ public class HomePage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		this.getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").
-		forward(request, response);
+		
+		VerificationService verifService=new VerificationService();
+		if(!verifService.isConectionBdOk()) {
+			this.getServletContext().getRequestDispatcher("OutOfService").forward(request, response);
+		}else
+		this.getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").forward(request, response);
 	}
 
 	/**
@@ -46,12 +50,12 @@ public class HomePage extends HttpServlet {
 
 		// Récupération de l'utilisateur connecté depuis la session
 		User userLogged = (User) session.getAttribute("user");
-		System.out.println(userLogged);
-
-		if (userLogged == null) {
-			// Si aucun utilisateur n'est connecté, redirection vers la page de connexion
-			response.sendRedirect("loginPage.jsp");
-		} else {
+		
+		
+		VerificationService verifService=new VerificationService();
+		if (!verifService.checkAll(userLogged)){ // verifier conexion Bd et user logged
+			this.getServletContext().getRequestDispatcher(verifService.getRedirect()).forward(request, response); 
+		}else {
 			// Si un utilisateur est connecté, exécution de la logique de jeu
 			userLogged.play(Integer.parseInt(request.getParameter("level")));
 
@@ -60,8 +64,15 @@ public class HomePage extends HttpServlet {
 			session.setAttribute("indexPuzzle", 0);
 
 			// Transfert de la requête et de la réponse à la JSP pour affichage
-			this.getServletContext().getRequestDispatcher("/Enigme").
-			forward(request, response);
+			this.getServletContext().getRequestDispatcher("/Enigme").forward(request, response);
 		}
+		
+		
+
 	}
+	
+	
+	
+
+	
 }
