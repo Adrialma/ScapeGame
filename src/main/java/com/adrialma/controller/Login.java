@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 		}
 		else {
 			System.out.println("Pas de conexion a la BD, service non disponible");
-			this.getServletContext().getRequestDispatcher("/WEB-INF/OutOfService").forward(request, response);
+			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 		}
 	}
 
