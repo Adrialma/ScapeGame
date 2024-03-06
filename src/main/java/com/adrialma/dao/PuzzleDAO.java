@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.adrialma.model.Puzzle;
 
@@ -82,4 +83,22 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 
 		return list; // Retourne la liste des puzzles récupérés
 	}
+
+	@Override
+	public boolean add(Puzzle o, int x1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean add(Puzzle o, int x1, int x2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	
+	
+	
+	
+	
 }

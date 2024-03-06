@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.adrialma.dao.DaoBd;
 import com.adrialma.dao.GameDAO;
+import com.adrialma.dao.PuzzleDAO;
+import com.adrialma.dao.PuzzlePlayedDAO;
 import com.adrialma.model.Game;
 import com.adrialma.model.User;
 import com.adrialma.service.VerificationService;
@@ -47,13 +50,18 @@ public class Score extends HttpServlet {
 		Game currentGame = user.getSingleGame();
 		currentGame.exec();
 		request.setAttribute("gameScore", currentGame.getScore());
-		// TODO Apeller la methode pour enregistrer les resultats dans la BDD
+		
+		// Apeller de methodes pour enregistrer les resultats dans la BDD
 		currentGame.endDates();
 		GameDAO gameDAO = new GameDAO();
-		gameDAO.add(currentGame);
+		gameDAO.add(currentGame,user.getIdUser());
 		System.out.println("id game: " + currentGame.getIdGame());
 		
-		//Reinitialiser les jeux 
+
+		PuzzlePlayedDAO puzzlePlayedDAO =  new PuzzlePlayedDAO();
+		puzzlePlayedDAO.addArray(currentGame.getPuzzles(), currentGame.getIdGame() );
+		
+		//Reinitialiser le jeu
 		user.flushGames();
         getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeScore.jsp").forward(request, response);
 		}
