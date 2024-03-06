@@ -51,7 +51,13 @@ public class User {
 		this.password = hashPassword(pw);
 	}
 
-	// Méthode privée pour chiffrer le mot de passe avec SHA-256
+	
+
+	/**
+	 * Méthode privée pour chiffrer le mot de passe avec SHA-256
+	 * @param pass
+	 * @return
+	 */
 	public String hashPassword(String pass) {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -92,7 +98,9 @@ public class User {
         }
 		// Création d'un nouveau jeu avec les énigmes du niveau de difficulté choisi
 		Game newGame = new Game();
+		newGame.setLevelPlayed(level);
 		newGame.getPuzzels(level);
+		newGame.initDates();
 		games.add(newGame);
 	}
 

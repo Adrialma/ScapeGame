@@ -1,7 +1,10 @@
 package com.adrialma.model;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.adrialma.dao.PuzzleDAO;
@@ -11,15 +14,15 @@ import com.adrialma.dao.PuzzleDAO;
  */
 public class Game {
 	private int idGame;
-	private Date date; // pour stocker la date de la session
-	private Date start; // L'heure de début de la session
-	private Date fin; // L'heure de fin de la session
+	private Date date; // pour stocker la date du jeu
+	private Time start; // L'heure de début du jeu
+	private Time fin; // L'heure de fin du jeu
 	private int score; //out, la moyenne des scores obtenus dans la classe Puzzle
 	private List<Puzzle> puzzles= new ArrayList<Puzzle>();
 	private int levelPlayed;// le niveau de defficulté choisi par le joueur
 
 	// Constructeur avec tous les paramètres
-	public Game(int idGame, Date date, Date start, Date fin, int score, List<Puzzle> puzzles, int levelPlayed) {
+	public Game(int idGame, Date date, Time start, Time fin, int score, List<Puzzle> puzzles, int levelPlayed) {
 		super();
 		this.idGame = idGame;
 		this.date = date;
@@ -63,6 +66,15 @@ public class Game {
 			System.out.println(puzzle);
 		}
 	}
+	
+	public void initDates() {
+		date = Date.valueOf(LocalDate.now());
+		start = Time.valueOf(LocalTime.now());
+	}
+	
+	public void endDates() {
+		fin = Time.valueOf(LocalTime.now());
+	}
 
 	// Getters et Setters
 	public int getIdGame() {
@@ -73,6 +85,7 @@ public class Game {
 		this.idGame = idGame;
 	}
 
+
 	public Date getDate() {
 		return date;
 	}
@@ -81,19 +94,19 @@ public class Game {
 		this.date = date;
 	}
 
-	public Date getStart() {
+	public Time getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(Time start) {
 		this.start = start;
 	}
 
-	public Date getFin() {
+	public Time getFin() {
 		return fin;
 	}
 
-	public void setFin(Date fin) {
+	public void setFin(Time fin) {
 		this.fin = fin;
 	}
 
