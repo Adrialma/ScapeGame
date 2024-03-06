@@ -4,21 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.sql.Statement;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
 
 import com.adrialma.model.Game;
-
-import com.adrialma.model.Puzzle;
-import com.adrialma.model.User;
-
 
 public class GameDAO implements Crudable<Game>{
 

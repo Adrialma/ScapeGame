@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.adrialma.dao.DaoBd;
 
 /**
  * Servlet qui gère les cas où l'application n'est pas en mesure de fournir le service demandé.
@@ -31,7 +34,10 @@ public class OutOfService extends HttpServlet {
 	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Detruire toutes les conexions avant d'envoyer l'utilisateur vers out of service
+		// Detruire toutes les conexions avant d'envoyer l'utilisateur vers out of service
+		HttpSession session = request.getSession();
+		session.invalidate();
+		DaoBd.closeConnection();
 
 		// Redirection vers une page JSP dédiée, informant l'utilisateur de l'indisponibilité du service.
 		this.getServletContext().getRequestDispatcher("/WEB-INF/OutOfService.jsp").forward(request, response);
