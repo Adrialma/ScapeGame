@@ -95,6 +95,40 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public ArrayList<Puzzle> getArray(int x, String champ) {
+		// Construction de la requête SQL pour récupérer les puzzles joués
+				String sql =  "SELECT * FROM puzzle_played WHERE " + champ + " = '" + x +"'" ;
+
+				// Création d'une liste pour stocker les puzzles récupérés
+				ArrayList<Puzzle> list = new ArrayList<Puzzle>();
+
+				try {
+					// Exécution de la requête SQL
+				
+					Statement smt = DaoBd.getCn().createStatement(
+							ResultSet.TYPE_SCROLL_INSENSITIVE,
+							ResultSet.CONCUR_READ_ONLY) ;
+					ResultSet rs = smt.executeQuery(sql) ;
+
+					// Parcours des résultats de la requête et création d'objets Puzzle correspondants
+					while (rs.next()) {									 			
+						Puzzle s = new Puzzle(rs.getInt("idPuzzle"),		
+								rs.getString("description"),
+								rs.getInt("scorePuzzle"));
+						list.add(s); // Ajout du puzzle à la liste
+					}
+
+					// Fermeture du ResultSet et du Statement
+					rs.close();
+					smt.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+				return list; // Retourne la liste des puzzles récupérés
+	}
 	
 	
 	
