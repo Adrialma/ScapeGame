@@ -8,16 +8,30 @@ import java.util.logging.Logger;
 import com.adrialma.dao.UserDAO;
 import com.adrialma.model.User;
 
+/**
+ * La classe LoginForm gère la validation des données de formulaire de connexion.
+ * Elle valide les entrées de l'utilisateur et vérifie ces informations contre la base de données.
+ * Si les validations échouent ou si l'utilisateur n'est pas trouvé, elle enregistre les erreurs correspondantes.
+ */
 public class LoginForm {
-	private User user;
-	private HashMap<String, String> errorList;
-	private static final Logger LOGGER = Logger.getLogger(LoginForm.class.getName());// rajout d'attribut
+	private User user; // L'utilisateur connecté, null si la connexion échoue
+	private HashMap<String, String> errorList; // Liste des messages d'erreur de validation
+	private static final Logger LOGGER = Logger.getLogger(LoginForm.class.getName()); // Logger pour enregistrer les erreurs
 
-	// Constructeur de la classe
+	/**
+	 * Constructeur qui traite la requête HTTP pour la connexion d'un utilisateur.
+	 * Il extrait les paramètres de la requête, les valide, et tente de connecter l'utilisateur.
+	 * Tente de connecter l'utilisateur avec les identifiants fournis. 
+	 * Enregistre les erreurs de connexion si nécessaire.
+	 * 
+	 * @param userName Le nom d'utilisateur saisi.
+	 * @param password Le mot de passe saisi.
+	 * @param request La requête HTTP contenant les données de connexion.
+	 */
 	public LoginForm(HttpServletRequest request) {
 		errorList = new HashMap<>();
 
-		// Récupération des paramètres de la requête
+		// Extraction et validation des paramètres de la requête
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 
@@ -37,8 +51,8 @@ public class LoginForm {
 			} else if (!user.checkPassword(password)) {
 				errorList.put("passwordError", "Le mot de passe n'est pas correct.");
 			} else {
-				// Connexion réussie
-				this.user = user;
+
+				this.user = user; // Connexion réussie
 				user.connect(); // Mise à jour de l'état de connexion de l'utilisateur
 			}
 		}
@@ -50,31 +64,42 @@ public class LoginForm {
 		}
 	}
 
-	// Méthode pour valider le nom d'utilisateur
+	/**
+	 * Valide le nom d'utilisateur fourni.
+	 * 
+	 * @param userName Le nom d'utilisateur à valider.
+	 */
 	private void validateUserName(String userName) {
 		if (userName == null || userName.trim().isEmpty()) {
 			errorList.put("userName", "Le nom d'utilisateur ne doit pas être vide.");
 		}
 	}
 
-	// Méthode pour valider le mot de passe
+	/**
+	 * Valide le mot de passe fourni.
+	 * 
+	 * @param password Le mot de passe à valider.
+	 */
 	private void validatePassword(String password) {
 		if (password == null || password.trim().isEmpty()) {
 			errorList.put("password", "Le mot de passe ne doit pas être vide.");
 		}
 	}
 
-	// Méthode pour enregistrer les erreurs dans la console ou un fichier journal
+	/**
+	 * Enregistre les erreurs de connexion dans le journal d'application.
+	 * 
+	 * @param errors La liste des erreurs à enregistrer.
+	 */
 	private void logErrors(HashMap<String, String> errors) {
 		StringBuilder errorMsg = new StringBuilder("Erreurs lors de la tentative de connexion :\n");
 		for (HashMap.Entry<String, String> error : errors.entrySet()) {
 			errorMsg.append(error.getKey()).append(": ").append(error.getValue()).append("\n");
 		}
-
 		LOGGER.log(Level.WARNING, errorMsg.toString());
 	}
 
-	// Getters et setters pour les attributs de la classe
+	// Getters et setters
 	public User getUser() {
 		return user;
 	}
