@@ -33,13 +33,16 @@ public interface Crudable<T> {
 	 */
 	public ArrayList<T> get() ;
 
+
 	/**
 	 * Récupère une liste d'entités basée sur un critère spécifique représenté par 'x'.
 	 *
 	 * @param x Le critère utilisé pour filtrer les entités à récupérer.
 	 * @return Une liste d'entités correspondant au critère spécifié.
 	 */
+
 	public ArrayList<T> getArray(int x) ; //Methode Ajouté
+	public ArrayList<T> getArray(int x, String champ) ; //Methode Ajouté
 
 	/**
 	 * Supprime une entité spécifique de la base de données.

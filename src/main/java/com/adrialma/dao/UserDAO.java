@@ -8,10 +8,12 @@ import java.util.ArrayList;
 
 import com.adrialma.model.User;
 
+
 /**
  * Fournit les fonctionnalités CRUD pour les objets User dans la base de données.
  * Permet de récupérer, ajouter, et gérer les utilisateurs en utilisant des requêtes SQL.
  */
+
 public class UserDAO implements Crudable<User>  {
 
 	/**
@@ -68,8 +70,29 @@ public class UserDAO implements Crudable<User>  {
 
 	@Override
 	public ArrayList<User> get() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql =  "SELECT * FROM user" ;
+		ArrayList<User> list = new ArrayList<User>();
+		try {
+			Statement smt = DaoBd.getCn().createStatement(
+					ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY) ;
+			ResultSet rs = smt.executeQuery(sql) ;
+			while (rs.next()) {									// (La lecture des données retournées se fait toujours ligne par ligne... 
+																// ... Ici de la 1ère à la dernière). Ainsi Tant qu'il y a des lignes de résultats retournés...
+				User s = new User(rs.getInt("idUser"), rs.getString("firstName"),  
+						rs.getString("lastName"), 
+						rs.getString("userName"), 
+						rs.getString("password"),false); 
+				
+				list.add(s);
+			}
+			rs.close();
+			smt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    
+		return list;
 	}
 
 	@Override
@@ -142,5 +165,11 @@ public class UserDAO implements Crudable<User>  {
 	public boolean add(User o, int x1, int x2) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public ArrayList<User> getArray(int x, String champ) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

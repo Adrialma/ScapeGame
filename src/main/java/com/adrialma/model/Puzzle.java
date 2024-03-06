@@ -53,6 +53,15 @@ public class Puzzle {
 		this.level = level;
 		this.answer = answer;
 	}
+	
+	
+
+	public Puzzle(int idPuzzle, String description, int scorePuzzle) {
+		super();
+		this.idPuzzle = idPuzzle;
+		this.description = description;
+		this.scorePuzzle = scorePuzzle;
+	}
 
 	/**
 	 * Démarre l'énigme en enregistrant l'heure de début.
