@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class GameOver
+ * Servlet qui gère l'affichage de la page de fin de jeu (GameOver).
+ * Lorsque le jeu se termine, cette servlet est invoquée pour rediriger l'utilisateur vers une page spécifiant que le jeu est terminé.
  */
 @WebServlet("/GameOver")
 public class GameOver extends HttpServlet {
@@ -19,25 +20,31 @@ public class GameOver extends HttpServlet {
 	 */
 	public GameOver() {
 		super();
-		// Constructeur par défaut
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Traite les requêtes GET en redirigeant l'utilisateur vers la page GameOver.jsp.
+	 * Cette méthode peut être étendue pour inclure des tâches de nettoyage, comme la réinitialisation des données de session liées au jeu.
+	 *
+	 * @param request La requête envoyée par le client au serveur.
+	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO clean session, user et tout
 		// Cette ligne peut contenir du code pour nettoyer les données de session ou effectuer d'autres tâches liées à la fin du jeu
 
-		// Redirige vers la page GameOver.jsp
+		// Redirige l'utilisateur vers la page GameOver.jsp pour afficher le message de fin de jeu.
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/GameOver.jsp").forward(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Traite les requêtes POST de la même manière que les requêtes GET.
+	 * Cette méthode est appelée si une requête POST est envoyée à cette servlet, mais par défaut, elle redirige simplement vers la méthode doGet.
+	 *
+	 * @param request La requête envoyée par le client au serveur.
+	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 }

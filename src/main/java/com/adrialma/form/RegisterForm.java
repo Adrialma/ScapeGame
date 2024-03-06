@@ -6,15 +6,29 @@ import javax.servlet.http.HttpServletRequest;
 import com.adrialma.dao.UserDAO; 
 import com.adrialma.model.User;
 
+/**
+ * La classe RegisterForm est responsable de la validation et de l'enregistrement des données d'inscription d'un nouvel utilisateur.
+ * Elle valide les entrées fournies via un formulaire d'inscription et, si les données sont valides, procède à l'enregistrement de l'utilisateur.
+ */
 public class RegisterForm {
-	private User user; // Instance de User pour stocker les informations de l'utilisateur après validation
-	private HashMap<String, String> errorList; // Liste pour stocker les erreurs de validation
+	private User user; // Instance de User pour stocker les informations validées de l'utilisateur
+	private HashMap<String, String> errorList; // Liste pour stocker les erreurs de validation rencontrées
 
-	// Constructeur qui prend la requête HTTP comme argument
+	/**
+	 * Constructeur qui initie le processus de validation et d'enregistrement basé sur les données fournies dans la requête HTTP.
+	 * Tente de créer et d'enregistrer le nouvel utilisateur en utilisant les informations validées.
+	 * Ajoute des erreurs à la liste si l'utilisateur ne peut pas être enregistré.
+	 * 
+	 * @param firstName Prénom de l'utilisateur.
+	 * @param lastName Nom de famille de l'utilisateur.
+	 * @param userName Nom d'utilisateur choisi.
+	 * @param password Mot de passe choisi.
+	 * @param request La requête HTTP contenant les données du formulaire d'inscription.
+	 */
 	public RegisterForm(HttpServletRequest request) {
 		errorList = new HashMap<>(); // Initialisation de la liste des erreurs
 
-		// Récupération des paramètres de la requête
+		// Récupération des données du formulaire
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String userName = request.getParameter("userName");
@@ -47,7 +61,13 @@ public class RegisterForm {
 		}
 	}
 
-	// Valide les noms et prénoms
+	/**
+	 * Valide un champ de nom (prénom ou nom de famille) en vérifiant qu'il n'est pas vide, a une longueur minimale
+	 * et ne contient que des lettres.
+	 * 
+	 * @param fieldName Le nom du champ (utilisé pour identifier le champ dans la liste des erreurs).
+	 * @param value La valeur du champ à valider.
+	 */
 	private void validateName(String fieldName, String value) {
 		if (value == null || value.trim().isEmpty()) {
 			errorList.put(fieldName, "Le " + fieldName + " ne doit pas être vide.");
@@ -58,7 +78,11 @@ public class RegisterForm {
 		}
 	}
 
-	// Valide le nom d'utilisateur
+	/**
+	 * Valide le nom d'utilisateur en s'assurant qu'il n'est pas vide et respecte une longueur minimale.
+	 * 
+	 * @param userName Le nom d'utilisateur à valider.
+	 */
 	private void validateUserName(String userName) {
 		if (userName == null || userName.trim().isEmpty()) {
 			errorList.put("userName", "Le nom d'utilisateur ne doit pas être vide.");
@@ -67,7 +91,11 @@ public class RegisterForm {
 		}
 	}
 
-	// Valide le mot de passe
+	/**
+	 * Valide le mot de passe en vérifiant qu'il n'est pas vide et respecte une longueur minimale.
+	 * 
+	 * @param password Le mot de passe à valider.
+	 */
 	private void validatePassword(String password) {
 		if (password == null || password.trim().isEmpty()) {
 			errorList.put("password", "Le mot de passe ne doit pas être vide.");
@@ -76,7 +104,7 @@ public class RegisterForm {
 		}
 	}
 
-	// Getters et Setters pour user et errorList
+	// Getters et Setters
 	public User getUser() {
 		return user;
 	}

@@ -3,70 +3,79 @@ package com.adrialma.service;
 import java.io.IOException;
 import java.net.Socket;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import com.adrialma.dao.DaoBd;
 import com.adrialma.model.User;
 
+/**
+ * La classe VerificationService est utilisée pour effectuer diverses vérifications avant de permettre à un utilisateur
+ * d'accéder à certaines parties de l'application. Elle vérifie notamment l'état de la connexion à la base de données
+ * et si un utilisateur est connecté.
+ */
 public class VerificationService {
+	private String redirect =""; // Chemin de redirection en cas d'échec d'une vérification
 	
-
-	private String redirect ="";
-	
-	
-	
+	/**
+     * Constructeur par défaut.
+     */
 	public VerificationService() {
 		super();
 	}
 
+	/**
+     * Vérifie l'état de la connexion à la base de données et si l'utilisateur est connecté. Met à jour
+     * la variable de redirection en fonction de l'état des vérifications.
+     * 
+     * @param user L'utilisateur à vérifier.
+     * @return true si toutes les vérifications sont passées avec succès, false autrement.
+     */
 	public boolean checkAll(User user) {
 		boolean allOk = true;
 		if (!isConectionBdOk()) {
-			redirect ="/OutOfService";
+			redirect ="/OutOfService"; // Redirection en cas d'échec de la connexion à la BD
 			allOk = false;
 		}
 		if (!isUserConected(user)) {
-			redirect = "/Login";
+			redirect = "/Login"; // Redirection si l'utilisateur n'est pas connecté
 			allOk = false;
 		}
-			
 		return allOk;
-		
-		
 	}
 	
+	 /**
+     * Vérifie si la connexion à la base de données est opérationnelle en tentant de se connecter au serveur MySQL.
+     * 
+     * @return true si la connexion à la base de données est établie avec succès, false autrement.
+     */
 	public boolean isConectionBdOk() {
 		// Verifier que le serveur mysql est started
 		 boolean isUp = false;
 		    try {
-		    
-		        Socket socket = new Socket("localhost", 3306);
-		        //server OK
-		        socket.close();  
+		        Socket socket = new Socket("localhost", 3306); // Tente de se connecter au serveur MySQL
+		        socket.close(); // Ferme la socket immédiatement après une connexion réussie
 		        
-		        // Verifier conexion
-		        DaoBd.conecter();
+		        DaoBd.conecter(); // Tente de se connecter à la base de données
 		        if (DaoBd.getCn()!=null) 
-		        	isUp = true;   
+		        	isUp = true; // La connexion est réussie 
 		    }
 		    catch (IOException e)
 		    {
-		    	
 		        System.out.println("Server is down.... Envoyer vers la page d'erreur");
-		        DaoBd.closeConnection(); // appelle a la fonction close conection au cas ou il y aura une conexion active et le server down
+		        DaoBd.closeConnection(); // Ferme la connexion à la base de données en cas d'échec
 		    }
-
 		return isUp; 
-		
 	}
 	
-	
+	 /**
+     * Vérifie si l'utilisateur est actuellement connecté.
+     * 
+     * @param user L'utilisateur à vérifier.
+     * @return true si l'utilisateur n'est pas null, ce qui indique qu'il est connecté, false autrement.
+     */
 	public boolean isUserConected(User user) {
 		return (user == null) ? false : true;
-	
 	}
 
+	// Getters et Setters pour la variable redirect.
 	public String getRedirect() {
 		return redirect;
 	}
@@ -75,15 +84,8 @@ public class VerificationService {
 		this.redirect = redirect;
 	}
 	
-	
-
 	@Override
 	public String toString() {
 		return "VerificationService [redirect=" + redirect + "]";
 	}
-
 }
-	
-	
-
-

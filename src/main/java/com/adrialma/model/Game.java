@@ -10,18 +10,30 @@ import java.util.List;
 import com.adrialma.dao.PuzzleDAO;
 
 /**
- * 
+ * Représente une session de jeu, incluant les détails et la logique pour gérer une partie.
+ * Chaque partie est caractérisée par son identifiant, sa date, son heure de début et de fin,
+ * le score total, une liste des puzzles joués, et le niveau de difficulté sélectionné par le joueur.
  */
 public class Game {
 	private int idGame;
-	private Date date; // pour stocker la date du jeu
-	private Time start; // L'heure de début du jeu
-	private Time fin; // L'heure de fin du jeu
-	private int score; //out, la moyenne des scores obtenus dans la classe Puzzle
-	private List<Puzzle> puzzles= new ArrayList<Puzzle>();
-	private int levelPlayed;// le niveau de defficulté choisi par le joueur
+	private Date date; // Date de la partie
+	private Time start; // Heure de début de la partie
+	private Time fin; // Heure de fin de la partie
+	private int score; // Score moyen des puzzles
+	private List<Puzzle> puzzles = new ArrayList<>(); // Liste des puzzles joués pendant la partie
+	private int levelPlayed; // Niveau de difficulté choisi pour la partie
 
-	// Constructeur avec tous les paramètres
+	/**
+	 * Constructeur complet permettant d'initialiser une partie avec tous ses attributs.
+	 * 
+	 * @param idGame Identifiant unique de la partie.
+	 * @param date Date de la partie.
+	 * @param start Heure de début de la partie.
+	 * @param fin Heure de fin de la partie.
+	 * @param score Score moyen obtenu dans les puzzles.
+	 * @param puzzles Liste des puzzles joués.
+	 * @param levelPlayed Niveau de difficulté sélectionné.
+	 */
 	public Game(int idGame, Date date, Time start, Time fin, int score, List<Puzzle> puzzles, int levelPlayed) {
 		super();
 		this.idGame = idGame;
@@ -48,25 +60,30 @@ public class Game {
 	
 	
 
-	// Constructeur par défaut
+	/**
+	 * Constructeur par défaut pour initialiser une nouvelle partie sans détails spécifiques.
+	 */
 	public Game() {
 		super();
 	}
 
-	// Méthode pour exécuter la logique du jeu
+	/**
+	 * Exécute la logique du jeu, calculant notamment le score moyen des puzzles joués.
+	 */
 	public void exec() {
 		// Calcul de la moyenne des scores obtenus dans la classe Puzzle
 		for (Puzzle puzzle : puzzles) {
 			puzzle.scoreCalculate(); // Calcul du score pour chaque puzzle
 			score += puzzle.getScorePuzzle(); // Addition des scores de chaque puzzle
 		}
-		
-			score = score / puzzles.size(); // Calcul de la moyenne
+
+		score = score / puzzles.size(); // Calcul de la moyenne
 	}
 
 	/**
-	 * methode qui recupere les puzzels selon le level choissi
-	 * @param level Niveau de difficulté choisi
+	 * Récupère et initialise les puzzles en fonction du niveau de difficulté sélectionné.
+	 * 
+	 * @param level Niveau de difficulté des puzzles à récupérer.
 	 * @return List de puzzels récupérés
 	 */
 	public void getPuzzels(int level) {
@@ -81,12 +98,18 @@ public class Game {
 			System.out.println(puzzle);
 		}
 	}
-	
+
+	/**
+	 * Initialise les horaires de début de la partie à la date et l'heure actuelles.
+	 */
 	public void initDates() {
 		date = Date.valueOf(LocalDate.now());
 		start = Time.valueOf(LocalTime.now());
 	}
-	
+
+	/**
+	 * Enregistre l'heure de fin de la partie à l'heure actuelle.
+	 */
 	public void endDates() {
 		fin = Time.valueOf(LocalTime.now());
 	}

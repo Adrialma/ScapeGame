@@ -9,11 +9,21 @@ import java.util.ArrayList;
 import com.adrialma.model.User;
 
 
+/**
+ * Fournit les fonctionnalités CRUD pour les objets User dans la base de données.
+ * Permet de récupérer, ajouter, et gérer les utilisateurs en utilisant des requêtes SQL.
+ */
+
 public class UserDAO implements Crudable<User>  {
 
+	/**
+	 * Récupère un utilisateur de la base de données en utilisant son nom d'utilisateur.
+	 *
+	 * @param userName Le nom d'utilisateur de l'utilisateur à récupérer.
+	 * @return Un objet User correspondant au nom d'utilisateur, ou null si aucun utilisateur n'est trouvé.
+	 */
 	@Override
 	public User get(String userName) {
-		// TODO Auto-generated method stub
 
 		// Connexion à la base de données
 		DaoBd.conecter();
@@ -92,9 +102,10 @@ public class UserDAO implements Crudable<User>  {
 	}
 
 	/**
-	 * @param Object type User
-	 * @return true si enregistrement effectué, false si enregistrement non effectué
+	 * Ajoute un nouvel utilisateur dans la base de données.
 	 *
+	 * @param o L'objet User à ajouter dans la base de données.
+	 * @return true si l'ajout est réussi, false dans le cas contraire.
 	 */
 	@Override
 	public boolean add(User o) {
