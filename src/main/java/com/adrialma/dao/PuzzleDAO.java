@@ -4,10 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.adrialma.model.Puzzle;
 
+/**
+ * Classe d'accès aux données pour les puzzles, implémentant les opérations CRUD pour les puzzles.
+ * Permet la récupération, l'ajout, la mise à jour, et la suppression de puzzles dans la base de données.
+ */
 public class PuzzleDAO implements Crudable<Puzzle> {
 
 	@Override
@@ -46,6 +49,12 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 		return false;
 	}
 
+	/**
+	 * Récupère une liste de puzzles d'un certain niveau de difficulté spécifié par le paramètre 'x'.
+	 * 
+	 * @param x Le niveau de difficulté des puzzles à récupérer.
+	 * @return Une liste contenant les puzzles du niveau spécifié.
+	 */
 	@Override
 	public ArrayList<Puzzle> getArray(int x) {
 		// TODO Auto-generated method stub
@@ -95,10 +104,4 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-	
-	
-	
-	
 }

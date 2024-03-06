@@ -89,7 +89,3 @@ public class VerificationService {
 		return "VerificationService [redirect=" + redirect + "]";
 	}
 }
-	
-	
-
-

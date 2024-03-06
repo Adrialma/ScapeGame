@@ -12,7 +12,8 @@ import com.adrialma.model.User;
 import com.adrialma.service.VerificationService;
 
 /**
- * Servlet implementation class Login
+ * Servlet qui gère le processus de connexion des utilisateurs.
+ * Accessible via l'URL '/Login', elle permet aux utilisateurs de se connecter à l'application.
  */
 @WebServlet("/Login")
 public class Login extends HttpServlet {
@@ -26,7 +27,12 @@ public class Login extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Gère les requêtes GET pour la page de connexion.
+	 * Affiche la page de connexion si la connexion à la base de données est disponible,
+	 * sinon redirige vers une page d'erreur.
+	 *
+	 * @param request La requête envoyée par le client au serveur.
+	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -36,12 +42,17 @@ public class Login extends HttpServlet {
 		}else {
 			System.out.println("Pas de conexion a la BD, service non disponible");
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
-			
+
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Gère les requêtes POST envoyées par le formulaire de connexion.
+	 * Traite les données du formulaire, valide l'utilisateur, et redirige soit vers la page d'accueil,
+	 * soit vers le formulaire de connexion avec des messages d'erreur.
+	 *
+	 * @param request La requête envoyée par le client au serveur.
+	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -56,6 +67,12 @@ public class Login extends HttpServlet {
 		}
 	}
 
+	/**
+	 * Traite les informations du formulaire de connexion et détermine la redirection appropriée.
+	 *
+	 * @param request La requête contenant les données du formulaire de connexion.
+	 * @return Le chemin vers la page JSP à afficher.
+	 */
 	public String traiterRequest(HttpServletRequest request) {
 
 		// Traiter les informations du formulaire de login
