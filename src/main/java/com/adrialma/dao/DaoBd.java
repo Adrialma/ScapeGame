@@ -2,17 +2,21 @@ package com.adrialma.dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+/**
+ * Gestionnaire de la connexion à la base de données.
+ * Fournit des méthodes statiques pour établir, récupérer et fermer la connexion avec la base de données.
+ */
 public class DaoBd {
-	// Déclaration de la variable de connexion. Volatile pour assurer la visibilité entre les threads.
+	// Variable de connexion statique et volatile pour garantir une unique instance visible dans tous les threads.
 	private static volatile Connection cn;
 
 	/**
-	 * Établit une connexion à la base de données si elle n'est pas déjà établie.
+	 * Établit une connexion avec la base de données en utilisant JNDI pour rechercher la DataSource.
+	 * La méthode est thread-safe pour éviter la création de multiples connexions dans un contexte multithread.
 	 */
 	public static void conecter() {
 		try {
@@ -37,7 +41,7 @@ public class DaoBd {
 	/**
 	 * Retourne l'objet Connection actuel.
 	 * 
-	 * @return La connexion à la base de données.
+	 * @return L'objet Connection actuel. Peut être null si aucune connexion n'a été établie ou si elle a été fermée.
 	 */
 	public static Connection getCn() {
 		return cn;

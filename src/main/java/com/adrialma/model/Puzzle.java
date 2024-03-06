@@ -4,19 +4,29 @@ import java.time.Duration;
 import java.time.LocalTime;
 
 /**
- * La classe Puzzle représente une énigme dans le jeu.
+ * Représente une énigme individuelle dans le jeu. Chaque énigme a un niveau de difficulté,
+ * une description, une solution attendue, et un mécanisme de suivi du temps passé sur l'énigme.
  */
 public class Puzzle {
 	private int idPuzzle;
 	private String description;
-	private int level; // Peut être représenté par un String (ex: "Facile = 3", "Moyen = 2", "Difficile= 1")
+	private int level; // Niveau de difficulté de l'énigme (3 pour Facile, 2 pour Moyen, 1 pour Difficile)
 	private String answer;// la soulution de l'énigme 
 	private LocalTime timeStart; // L'heure de début de l'enigme
 	private LocalTime timeFin; // L'heure de fin de l'enigme
 	private int time; // Le temps passé dans l'énigme en secondes
 	private int scorePuzzle;//stocke le resultat calculé avec la méthode scoreCalculate
 
-	// Constructeur avec tous les paramètres
+	/**
+	 * Constructeur complet pour créer une énigme avec tous les détails nécessaires.
+	 * 
+	 * @param idPuzzle Identifiant unique de l'énigme.
+	 * @param description Description textuelle de l'énigme.
+	 * @param level Niveau de difficulté de l'énigme.
+	 * @param answer La solution de l'énigme.
+	 * @param time Temps passé sur l'énigme, en secondes.
+	 * @param scorePuzzle Score calculé de l'énigme.
+	 */
 	public Puzzle(int idPuzzle, String description, int level, String answer, int time, int scorePuzzle) {
 		super();
 		this.idPuzzle = idPuzzle;
@@ -27,6 +37,15 @@ public class Puzzle {
 		this.scorePuzzle = scorePuzzle;
 	}
 
+	/**
+	 * Constructeur simplifié pour initialiser une énigme sans temps ni score.
+	 * Utilisé principalement lors de la création d'une nouvelle énigme.
+	 * 
+	 * @param idPuzzle Identifiant unique de l'énigme.
+	 * @param description Description textuelle de l'énigme.
+	 * @param level Niveau de difficulté de l'énigme.
+	 * @param answer La solution de l'énigme.
+	 */
 	public Puzzle(int idPuzzle, String description, int level, String answer) {
 		super();
 		this.idPuzzle = idPuzzle;
@@ -35,12 +54,18 @@ public class Puzzle {
 		this.answer = answer;
 	}
 
-	// Méthode pour démarrer l'énigme et enregistrer l'heure de début
+	/**
+	 * Démarre l'énigme en enregistrant l'heure de début.
+	 */
 	public void startPuzzle() {
 		timeStart = LocalTime.now();
 	}
 
-	// Méthode pour terminer l'énigme, enregistrer l'heure de fin et calculer le temps écoulé
+	/**
+	 * Termine l'énigme, enregistre l'heure de fin, calcule et retourne le temps écoulé.
+	 * 
+	 * @return Le temps passé sur l'énigme, en secondes.
+	 */
 	public int endPuzzle() {
 		timeFin = LocalTime.now();
 		Duration duration = Duration.between(timeStart, timeFin);
@@ -48,19 +73,21 @@ public class Puzzle {
 		return time;
 	}
 
-	// Méthode pour calculer le score de l'énigme
+	/**
+	 * Calcule le score de l'énigme basé sur le temps passé et le niveau de difficulté.
+	 */
 	public void scoreCalculate() {
 		scorePuzzle = (100 - time + 1) / level;
 	}
 
 	/**
-	 * Vérification de la réponse saissie par l'utilisateur
+	 * Vérifie si la réponse fournie par l'utilisateur est correcte.
 	 * 
-	 * @param userAnswer - response de l'utilisateur
-	 * @return true si response est correcte, false en cas contraire
+	 * @param userAnswer La réponse de l'utilisateur.
+	 * @return true si la réponse est correcte, false sinon.
 	 */
 	public boolean checkAnswer(String userAnswer) {
-		return userAnswer.equals(answer); // Comparaison de la réponse de l'utilisateur avec la solution
+		return userAnswer.equals(answer); 
 	}
 
 	// Getters et Setters
