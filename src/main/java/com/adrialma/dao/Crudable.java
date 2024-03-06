@@ -12,6 +12,9 @@ public interface Crudable<T> {
 
 	public boolean delete(T o);
 	public boolean add(T o);
+	public boolean add(T o, int x1);
+	public boolean add(T o, int x1, int x2);
+	
 	public boolean update(T o);
 
 }

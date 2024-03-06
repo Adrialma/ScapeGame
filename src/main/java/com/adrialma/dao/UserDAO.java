@@ -121,4 +121,16 @@ public class UserDAO implements Crudable<User>  {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean add(User o, int x1) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean add(User o, int x1, int x2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
