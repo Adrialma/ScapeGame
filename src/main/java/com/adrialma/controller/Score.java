@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.adrialma.dao.GameDAO;
 import com.adrialma.model.Game;
 import com.adrialma.model.User;
 import com.adrialma.service.VerificationService;
@@ -47,7 +48,10 @@ public class Score extends HttpServlet {
 		currentGame.exec();
 		request.setAttribute("gameScore", currentGame.getScore());
 		// TODO Apeller la methode pour enregistrer les resultats dans la BDD
-		
+		currentGame.endDates();
+		GameDAO gameDAO = new GameDAO();
+		gameDAO.add(currentGame);
+		System.out.println("id game: " + currentGame.getIdGame());
 		
 		//Reinitialiser les jeux 
 		user.flushGames();
