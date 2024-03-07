@@ -45,7 +45,6 @@ public class Game {
 		this.levelPlayed = levelPlayed;
 	}
 	
-	
 	// Constructeur sans liste de puzzles
 		public Game(int idGame, Date date, Time start, Time fin, int score,  int levelPlayed) {
 			super();
@@ -57,9 +56,6 @@ public class Game {
 			this.levelPlayed = levelPlayed;
 		}
 	
-	
-	
-
 	/**
 	 * Constructeur par défaut pour initialiser une nouvelle partie sans détails spécifiques.
 	 */

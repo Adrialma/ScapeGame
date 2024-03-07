@@ -54,8 +54,6 @@ public class Puzzle {
 		this.answer = answer;
 	}
 	
-	
-
 	public Puzzle(int idPuzzle, String description, int scorePuzzle) {
 		super();
 		this.idPuzzle = idPuzzle;
