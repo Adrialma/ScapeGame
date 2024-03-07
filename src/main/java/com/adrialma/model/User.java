@@ -155,18 +155,6 @@ public class User {
 	}
 
 	/**
-	 * Fonction pour recuperer un Single Game quand l'utilisateur est en mode play
-	 * @return l'element Game actual, null si il y a plusiers Games dans la list
-	 */
-	/*public Game getSingleGame() {
-		if (games.size()==1)
-			return games.get(0);
-		else
-			return null;
-
-	}*/
-
-	/**
 	 * Récupère le dernier jeu auquel l'utilisateur a joué ou null s'il n'y a pas de jeux dans la liste.
 	 * Utile pour obtenir le jeu actuel sans avoir besoin de connaître l'indice spécifique dans la liste.
 	 * 
@@ -252,8 +240,6 @@ public class User {
 	public void setIsconnected(Boolean isconnected) {
 		this.isconnected = isconnected;
 	}
-
-
 
 	@Override
 	public String toString() {

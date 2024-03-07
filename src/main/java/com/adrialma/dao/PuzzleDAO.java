@@ -89,7 +89,6 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 		return list; // Retourne la liste des puzzles récupérés
 	}
 
@@ -104,7 +103,6 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 
 	@Override
 	public ArrayList<Puzzle> getArray(int x, String champ) {
@@ -136,10 +134,6 @@ public class PuzzleDAO implements Crudable<Puzzle> {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-
 				return list; // Retourne la liste des puzzles récupérés
 	}
-	
-	
-
 }

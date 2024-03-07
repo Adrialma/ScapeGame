@@ -1,8 +1,6 @@
 package com.adrialma.dao;
 
-
 import java.sql.PreparedStatement;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +122,6 @@ public class PuzzlePlayedDAO implements Crudable<Puzzle> {
 		}
 	}
 
-
 	@Override
 	public boolean add(Puzzle o, int x1, int x2) {
 		// TODO Auto-generated method stub
@@ -137,5 +134,4 @@ public class PuzzlePlayedDAO implements Crudable<Puzzle> {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

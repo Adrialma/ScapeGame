@@ -65,6 +65,8 @@ public class Score extends HttpServlet {
 
 			//Reinitialiser le jeu
 			user.flushGames();
+			session.setAttribute("user", user); // Mettre à jour l'utilisateur dans la session
+
 			getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeScore.jsp").forward(request, response);
 		}
 	}

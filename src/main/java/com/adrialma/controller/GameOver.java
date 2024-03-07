@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.adrialma.model.User;
 
 /**
  * Servlet qui gère l'affichage de la page de fin de jeu (GameOver).
@@ -24,15 +27,20 @@ public class GameOver extends HttpServlet {
 
 	/**
 	 * Traite les requêtes GET en redirigeant l'utilisateur vers la page GameOver.jsp.
-	 * Cette méthode peut être étendue pour inclure des tâches de nettoyage, comme la réinitialisation des données de session liées au jeu.
+	 * Réinitialisation des données de session liées au jeu.
 	 *
 	 * @param request La requête envoyée par le client au serveur.
 	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO clean session, user et tout
-		// Cette ligne peut contenir du code pour nettoyer les données de session ou effectuer d'autres tâches liées à la fin du jeu
-
+		// Récupération de la session HTTP actuelle
+	    HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		
+		//Reinitialiser le jeu
+		user.flushGames();
+		session.setAttribute("user", user); // Mettre à jour l'utilisateur dans la session
+	 
 		// Redirige l'utilisateur vers la page GameOver.jsp pour afficher le message de fin de jeu.
 		this.getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/GameOver.jsp").forward(request, response);
 	}
