@@ -35,12 +35,13 @@ public class Login extends HttpServlet {
 	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// Création d'une instance du service de vérification
 		VerificationService verifService = new VerificationService();
 		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);	 // Rediriger vers la page de login
 		}else {
-			
+			// Si la connexion à la base de données échoue,
+			// Rediriger l'utilisateur vers une page signalant que le service est hors service
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 
 		}
@@ -55,14 +56,19 @@ public class Login extends HttpServlet {
 	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// Création d'une instance de VerificationService pour effectuer des vérifications
 		VerificationService verifService = new VerificationService();
 		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
+			// Si la connexion à la base de données est établie avec succès,
+			// Appel d'une méthode traiterRequest pour traiter la requête reçue et déterminer la redirection
 			String redirect = traiterRequest(request);
+			// Redirection vers l'URL ou le chemin JSP retourné par la méthode traiterRequest
 			this.getServletContext().getRequestDispatcher(redirect).forward(request, response); 
 		}
 		else {
+			// Si la connexion à la base de données échoue, affiche un message d'erreur dans la console
 			System.out.println("Pas de conexion a la BD, service non disponible");
+			// Et redirige l'utilisateur vers une page signalant que le service est hors service
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 		}
 	}

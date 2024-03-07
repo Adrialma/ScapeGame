@@ -44,13 +44,14 @@ public class Score extends HttpServlet {
 		User user = (User) session.getAttribute("user");
 
 		VerificationService verifService = new VerificationService();
-		if (!verifService.checkAll(user)) {
+		// Vérifie si l'utilisateur répond aux critères nécessaires
+		if (!verifService.checkAll(user)) {           
+			// Si non, redirige vers une page spécifique
 			this.getServletContext().getRequestDispatcher(verifService.getRedirect()).forward(request, response);
-
 		}else {
-
+			// Si oui, procède avec le calcul et l'enregistrement du score
 			Game currentGame = user.getSingleGame();
-			currentGame.exec();
+			currentGame.exec(); // Calcule le score
 			request.setAttribute("gameScore", currentGame.getScore());
 
 			// Apeller de methodes pour enregistrer les resultats dans la BDD
@@ -67,6 +68,7 @@ public class Score extends HttpServlet {
 			user.flushGames();
 			session.setAttribute("user", user); // Mettre à jour l'utilisateur dans la session
 
+			// Redirige vers la page de score
 			getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeScore.jsp").forward(request, response);
 		}
 	}

@@ -16,31 +16,26 @@ public class PuzzlePlayedDAO implements Crudable<Puzzle> {
 
 	@Override
 	public Puzzle get(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Puzzle get(String userName) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<Puzzle> get() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public ArrayList<Puzzle> getArray(int x) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean delete(Puzzle o) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -51,7 +46,6 @@ public class PuzzlePlayedDAO implements Crudable<Puzzle> {
 
 	@Override
 	public boolean update(Puzzle o) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -68,9 +62,7 @@ public class PuzzlePlayedDAO implements Crudable<Puzzle> {
 			if (!add(puzzle, idGame))
 				insert=false;
 		}
-
 		return insert;
-
 	}
 
 	/**
@@ -124,14 +116,12 @@ public class PuzzlePlayedDAO implements Crudable<Puzzle> {
 
 	@Override
 	public boolean add(Puzzle o, int x1, int x2) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 
 	@Override
 	public ArrayList<Puzzle> getArray(int x, String champ) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
