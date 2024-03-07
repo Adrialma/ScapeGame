@@ -34,12 +34,13 @@ public class Register extends HttpServlet {
 	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Création d'une instance de VerificationService pour vérifier l'état de la connexion à la base de données
 		VerificationService verifService = new VerificationService();
 		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
 			// Afficher la page d'inscription si la connexion à la base de données est OK
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Register.jsp").forward(request, response);
 		}else {
-			// Service non disponible en cas d'erreur de connexion à la base de données
+			// Rediriger vers une page d'erreur si la connexion à la BD échoue
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 			System.out.println("Pas de conexion a la BD, service non disponible");
 		}
@@ -54,19 +55,22 @@ public class Register extends HttpServlet {
 	 * @param response La réponse que le serveur envoie au client.
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// Affichage des données soumises pour le débogage
 		System.out.println(request.getParameter("firstName")); 
 		System.out.println(request.getParameter("lastName"));
 		System.out.println(request.getParameter("userName"));
 		System.out.println(request.getParameter("password"));
-
+		// Nouvelle vérification de la connexion à la BD avant de traiter le formulaire
 		VerificationService verifService = new VerificationService();
 		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
+			// Traiter les données du formulaire et déterminer la page de redirection
 			String redirect = traiterRequest(request);
+			// Rediriger l'utilisateur en fonction du résultat du traitement
 			this.getServletContext().getRequestDispatcher(redirect).forward(request, response);	
 
 		}else { // erreur dans la conexion a la bd
 			System.out.println("Pas de conexion a la BD, service non disponible");
+			// Rediriger vers une page d'erreur
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);	
 		}
 	}
@@ -78,8 +82,9 @@ public class Register extends HttpServlet {
 	 * @return Le chemin vers la page JSP à afficher.
 	 */
 	public String traiterRequest(HttpServletRequest request) {
-
+		// Validation des données du formulaire
 		RegisterForm registerForm = new RegisterForm(request);
+		// Ajout de l'utilisateur validé à l'attribut de la requête
 		request.setAttribute("user", registerForm.getUser());
 
 		if (registerForm.getErrorList().size()<1) {

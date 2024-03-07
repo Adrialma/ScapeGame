@@ -51,4 +51,3 @@ public class LogOut extends HttpServlet {
 		doGet(request, response);
 	}
 }
-

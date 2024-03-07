@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import com.adrialma.model.User;
 
-
 /**
  * Fournit les fonctionnalités CRUD pour les objets User dans la base de données.
  * Permet de récupérer, ajouter, et gérer les utilisateurs en utilisant des requêtes SQL.
@@ -64,40 +63,50 @@ public class UserDAO implements Crudable<User>  {
 
 	@Override
 	public User get(int id) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/**
+	 * Récupère tous les utilisateurs de la base de données.
+	 * 
+	 * @return Une liste contenant tous les utilisateurs récupérés.
+	 */
 	@Override
 	public ArrayList<User> get() {
+		// Définition de la requête SQL pour sélectionner tous les utilisateurs dans la table 'user'.
 		String sql =  "SELECT * FROM user" ;
+		// Initialisation d'une liste pour stocker les objets User récupérés.
 		ArrayList<User> list = new ArrayList<User>();
 		try {
+			// Création d'un objet Statement pour exécuter la requête.
 			Statement smt = DaoBd.getCn().createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY) ;
+			// Exécution de la requête et stockage du résultat dans un ResultSet.
 			ResultSet rs = smt.executeQuery(sql) ;
-			while (rs.next()) {									// (La lecture des données retournées se fait toujours ligne par ligne... 
-																// ... Ici de la 1ère à la dernière). Ainsi Tant qu'il y a des lignes de résultats retournés...
+			// Parcours du ResultSet pour créer et ajouter des objets User à la liste.
+			while (rs.next()) {	
+				// Création d'un nouvel objet User pour chaque ligne du résultat.
 				User s = new User(rs.getInt("idUser"), rs.getString("firstName"),  
 						rs.getString("lastName"), 
 						rs.getString("userName"), 
 						rs.getString("password"),false); 
-				
+				// Ajout de l'objet User à la liste.
 				list.add(s);
 			}
+			// Fermeture du ResultSet et du Statement pour libérer les ressources.
 			rs.close();
 			smt.close();
 		} catch (SQLException e) {
+			// Affichage de l'erreur en cas d'exception SQL.
 			e.printStackTrace();
 		}
-    
+		// Retourne la liste des utilisateurs récupérés.
 		return list;
 	}
 
 	@Override
 	public boolean delete(User o) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -137,7 +146,7 @@ public class UserDAO implements Crudable<User>  {
 			else 
 				return true;
 
-		} catch (Exception ex) { //TODO personaliser exception
+		} catch (Exception ex) { 
 			ex.printStackTrace();
 		}
 		return false;
@@ -145,31 +154,26 @@ public class UserDAO implements Crudable<User>  {
 
 	@Override
 	public boolean update(User o) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ArrayList<User> getArray(int x) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean add(User o, int x1) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean add(User o, int x1, int x2) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public ArrayList<User> getArray(int x, String champ) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

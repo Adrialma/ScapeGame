@@ -40,14 +40,21 @@ public class Enigme extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		// Récupération de la session HTTP
 		HttpSession session = request.getSession();
+		//Récupération de l'utilisateur depuis la session
 		User user = (User) session.getAttribute("user");
+		// Création d'une instance de VerificationService pour vérifier certaines conditions
 		VerificationService verifService = new VerificationService();
-
+		// Vérification si l'utilisateur remplit les conditions requises
 		if (!verifService.checkAll(user)) {
+			// Si l'utilisateur ne remplit pas les conditions, redirige vers une autre page
+			// La page de redirection est déterminée par le service de vérification
 			this.getServletContext().getRequestDispatcher(verifService.getRedirect()).forward(request, response);
 
 		}else
+			// Si l'utilisateur remplit les conditions, procède avec la méthode doPost
+			// Cela indique une réutilisation de la logique de traitement des requêtes POST pour les requêtes GET réussies
 			doPost(request, response);
 	}
 
@@ -129,13 +136,20 @@ public class Enigme extends HttpServlet {
 	 * Gère la réponse soumise par l'utilisateur à l'énigme actuelle, vérifiant si elle est correcte et agissant en conséquence.
 	 */
 	private void handlePuzzleResponse(HttpServletRequest request, HttpServletResponse response, User user, Game currentGame, int puzzleToPlay, String answer) throws ServletException, IOException {
+		// Récupération du puzzle actuel en se basant sur l'index du puzzle à jouer.
 		Puzzle currentPuzzle = currentGame.getPuzzles().get(puzzleToPlay - 1);
+		// Marquage de la fin du puzzle
 		currentPuzzle.endPuzzle();
+		// Vérification si le temps passé sur le puzzle dépasse une certaine limite (100 ici).
 		if (currentPuzzle.getTime() > 100) {
+			// Si le temps est dépassé, rediriger l'utilisateur vers une page de fin de jeu (GameOver).
 			getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/GameOver.jsp").forward(request, response);
 		} else if (currentPuzzle.checkAnswer(answer)) {
+			// Si la réponse fournie par l'utilisateur est correcte, rediriger vers la page du prochain puzzle.
 			getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/EnigmeSuivant.jsp").forward(request, response);
 		} else {
+			// Si la réponse est incorrecte, définir un message d'erreur et rediriger l'utilisateur vers la même page d'énigme
+			// pour qu'il puisse essayer à nouveau.
 			request.setAttribute("messageErreur", "Vous ne pouvez pas sortir de cette chambre, essayez autre chose !!!");
 			getServletContext().getRequestDispatcher("/WEB-INF/Enigmes/Enigme" + currentPuzzle.getIdPuzzle() + ".jsp").forward(request, response);
 		}

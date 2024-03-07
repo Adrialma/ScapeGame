@@ -30,7 +30,6 @@ public class InitProjectDAO {
 				System.out.println("Conected...");	
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -50,7 +49,6 @@ public class InitProjectDAO {
 				System.out.println("Conected...");	
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 	}
@@ -216,7 +214,6 @@ public class InitProjectDAO {
 			//étape 5: fermez l'objet de connexion
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
