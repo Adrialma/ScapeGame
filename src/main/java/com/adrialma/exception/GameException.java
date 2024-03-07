@@ -1,5 +1,6 @@
 package com.adrialma.exception;
 
+
 public class GameException extends Exception {
 
 	private static final long serialVersionUID = 1L;
@@ -47,13 +48,15 @@ public class GameException extends Exception {
 	}
 
 
-
+	public void printMessage() {
+		System.out.println(this.toString());
+	}
 
 
 
 	@Override
 	public String toString() {
-		return "GameException [mess=" + mess + ", gravite=" + gravite + "]";
+		return "Le program a levé la exception suivante: " + mess + ", gravite=" + gravite ;
 	}
 	
 	

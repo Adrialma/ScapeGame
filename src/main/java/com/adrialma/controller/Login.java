@@ -40,7 +40,7 @@ public class Login extends HttpServlet {
 		if (verifService.isConectionBdOk()) {	//Tester la conection a la BD
 			this.getServletContext().getRequestDispatcher("/WEB-INF/Login.jsp").forward(request, response);	 // Rediriger vers la page de login
 		}else {
-			System.out.println("Pas de conexion a la BD, service non disponible");
+			
 			this.getServletContext().getRequestDispatcher("/OutOfService").forward(request, response);
 
 		}

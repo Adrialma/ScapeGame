@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>Oups, le Service n'est pas disponible Temporairement</h1>
+<h3><a href="/ScapeGame/">Back to index</a></h3>
 </body>
 </html>
