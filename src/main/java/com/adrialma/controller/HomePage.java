@@ -38,11 +38,15 @@ public class HomePage extends HttpServlet {
 	 * @throws IOException si une erreur d'entrée ou de sortie est détectée quand le servlet traite la requête GET
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// Récupération de la session HTTP
+		HttpSession session = request.getSession();
+
+		// Récupération de l'utilisateur connecté depuis la session
+		User userLogged = (User) session.getAttribute("user");
 
 		VerificationService verifService=new VerificationService();
-		if(!verifService.isConectionBdOk()) {
-			// Redirige vers la page OutOfService si la connexion à la base de données n'est pas OK
-			this.getServletContext().getRequestDispatcher("OutOfService").forward(request, response);
+		if (!verifService.checkAll(userLogged)){ // verifier conexion Bd et user logged
+			this.getServletContext().getRequestDispatcher(verifService.getRedirect()).forward(request, response); 
 		}else {
 			// Redirige vers HomePage.jsp si la connexion à la base de données est OK
 			this.getServletContext().getRequestDispatcher("/WEB-INF/HomePage.jsp").forward(request, response);

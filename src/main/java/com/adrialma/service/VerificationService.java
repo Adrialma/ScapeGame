@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 import com.adrialma.dao.DaoBd;
+import com.adrialma.exception.GameException;
 import com.adrialma.model.User;
 
 /**
@@ -27,24 +28,44 @@ public class VerificationService {
      * 
      * @param user L'utilisateur à vérifier.
      * @return true si toutes les vérifications sont passées avec succès, false autrement.
+	 * @throws GameException 
      */
 	public boolean checkAll(User user) {
-		boolean allOk = true;
+		boolean bdOK = true;
+		boolean userOK = true;
+		
 		if (!isConectionBdOk()) {
 			redirect ="/OutOfService"; // Redirection en cas d'échec de la connexion à la BD
-			allOk = false;
+			bdOK = false;
 		}
+		
 		if (!isUserConected(user)) {
 			redirect = "/Login"; // Redirection si l'utilisateur n'est pas connecté
-			allOk = false;
+			userOK = false;
 		}
-		return allOk;
+		
+		
+		
+		
+		try {
+			if ( userOK==false )
+				 throw new GameException("Le user n'est pas connecté.... Envoyer vers la page de login",3);
+		} catch (GameException e) {
+			e.printMessage();
+		}
+	
+		
+	
+		
+		return bdOK && userOK;
+		
 	}
 	
 	 /**
      * Vérifie si la connexion à la base de données est opérationnelle en tentant de se connecter au serveur MySQL.
      * 
      * @return true si la connexion à la base de données est établie avec succès, false autrement.
+	 * @throws GameException 
      */
 	public boolean isConectionBdOk() {
 		// Verifier que le serveur mysql est started
@@ -59,9 +80,22 @@ public class VerificationService {
 		    }
 		    catch (IOException e)
 		    {
-		        System.out.println("Server is down.... Envoyer vers la page d'erreur");
+		    	
 		        DaoBd.closeConnection(); // Ferme la connexion à la base de données en cas d'échec
+		        //throw new GameException("Server is down.... Envoyer vers la page d'erreur",5);
 		    }
+		    
+		
+		    
+		    try {
+				if ( isUp==false )
+					 throw new GameException("Server is down.... Envoyer vers la page d'erreur",5);
+			} catch (GameException e) {
+				 e.printMessage();
+			}
+		    
+		    
+		    
 		return isUp; 
 	}
 	

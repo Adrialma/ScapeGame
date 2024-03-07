@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.adrialma.dao.DaoBd;
 
+
 /**
  * Servlet qui gère les cas où l'application n'est pas en mesure de fournir le service demandé.
  * Peut être utilisé pour signaler une maintenance en cours, des problèmes de connexion à la base de données,
@@ -38,6 +39,7 @@ public class OutOfService extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		DaoBd.closeConnection();
+
 
 		// Redirection vers une page JSP dédiée, informant l'utilisateur de l'indisponibilité du service.
 		this.getServletContext().getRequestDispatcher("/WEB-INF/OutOfService.jsp").forward(request, response);
